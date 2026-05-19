@@ -175,4 +175,5 @@ This project is intended for educational and demonstration purposes only.
 ## 👨‍💻 Author
 
 Developed by Shivani Gulhane
+
 Frontend Developer Intern
