@@ -164,41 +164,15 @@ graph TD
 
 ---
 
-## 💻 Getting Started Locally
-
-### Prerequisites
-Make sure you have Node.js and npm installed.
-
-### Installation
-1.  **Clone the Repository**:
-    ```bash
-    git clone https://github.com/Gulhane-Shivani/Generator_hub.git
-    cd Generator_hub
-    ```
-2.  **Install Dependencies**:
-    ```bash
-    npm install
-    ```
-3.  **Run Development Server**:
-    ```bash
-    npm run dev
-    ```
-    The local instance will launch on `http://localhost:5173/`.
-
-### Production Build
-To bundle the frontend for production hosting:
-```bash
-npm run build
-```
-
----
-
 ## 📄 License
 
-This project is licensed under the MIT License for educational and development practice.
+This project was developed as part of an internship training program for learning and implementing modern frontend development concepts using React.js and Tailwind CSS.
+
+This project is intended for educational and demonstration purposes only.
 
 ---
 
 ## 👨‍💻 Author
 
-Developed with focus on premium UI design systems, offline capability, and client-side processing.
+Developed by Shivani Gulhane
+Frontend Developer Intern
