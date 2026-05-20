@@ -16,6 +16,8 @@ import RandomNumberGenerator from '../tools/RandomNumberGenerator';
 import UsernameGenerator from '../tools/UsernameGenerator';
 import HashtagGenerator from '../tools/HashtagGenerator';
 import SocialMediaNameGenerator from '../tools/SocialMediaNameGenerator';
+import PasswordStrengthChecker from '../tools/PasswordStrengthChecker';
+import TextEncryptDecrypt from '../tools/TextEncryptDecrypt';
 
 const ToolDetailPage = () => {
   const { toolId } = useParams();
@@ -33,6 +35,8 @@ const ToolDetailPage = () => {
     'password-generator': <PasswordGenerator />,
     'otp-generator': <OtpGenerator />,
     'encryption-key-generator': <EncryptionKeyGenerator />,
+    'password-strength-checker': <PasswordStrengthChecker />,
+    'text-encrypt-decrypt': <TextEncryptDecrypt />,
     'name-generator': <NameGenerator />,
     'story-title-generator': <StoryTitleGenerator />,
     'idea-generator': <IdeaGenerator />,
@@ -91,6 +95,16 @@ const ToolDetailPage = () => {
       { title: 'Entropy Bit Lengths', text: 'Supports standard key sizes of 128-bit (AES-128), 256-bit (industry-standard military grade AES-256), and 512-bit (ultra-high entropy) key configurations.' },
       { title: 'Output Encoding', text: 'Instantly encodes generated key files into Hexadecimal format (for code integrations) or Base64 (ideal for config files and SSH key chains).' },
       { title: 'Random Seed Density', text: 'Uses high-entropy browser security modules to generate non-predictable cryptographic seeds safe for production database variables.' }
+    ],
+    'password-strength-checker': [
+      { title: 'Entropy Bits', text: 'Entropy evaluates the mathematical complexity of a password based on character pool size and length. A higher entropy value (e.g. > 60 bits) is extremely difficult to compromise.' },
+      { title: 'Pattern Recognition', text: 'Scans text patterns to flag repeating values, keyboard sequences (e.g. qwer), or incremental series (e.g. 123), which attackers check first.' },
+      { title: 'Estimated Crack Time', text: 'Calculates brute-force times based on high-end computer setups testing 100 billion checks per second, giving you a real-world perspective on safety.' }
+    ],
+    'text-encrypt-decrypt': [
+      { title: 'AES-256 GCM Standard', text: 'Uses Advanced Encryption Standard (AES) with a 256-bit key in Galois/Counter Mode, a highly secure, authenticated cipher suitable for sensitive details.' },
+      { title: 'PBKDF2 Key Derivation', text: 'Uses PBKDF2 with SHA-256 and 100,000 iterations to securely convert your plain password into a strong cryptographic key, defending against precomputed attacks.' },
+      { title: 'Base64 Packing', text: 'Packs the randomized salt, IV, and cipher bytes into a single base64 string, allowing you to easily share and decrypt it on any browser running Generator Hub.' }
     ],
     'name-generator': [
       { title: 'Naming Formulas', text: 'Uses smart algorithms combining prefix databases, suffix terms, and industry keywords to build memorable, brandable titles.' },

@@ -79,6 +79,36 @@ export const tools = [
       'One-click copy function'
     ]
   },
+  {
+    id: 'password-strength-checker',
+    category: 'security',
+    name: 'Password Strength Checker',
+    description: 'Analyze password strength, entropy bits, character variance, and estimated crack times.',
+    icon: 'FaShieldAlt',
+    trending: false,
+    features: [
+      'Interactive real-time strength meter',
+      'Detailed checklist of character requirements',
+      'Calculates entropy value (bits of security)',
+      'Estimated brute-force crack time calculation',
+      'Zero server dependencies or transmission'
+    ]
+  },
+  {
+    id: 'text-encrypt-decrypt',
+    category: 'security',
+    name: 'Text Encrypt & Decrypt',
+    description: 'Encrypt and decrypt text inputs locally in your browser using secure AES-GCM cryptography.',
+    icon: 'FaLock',
+    trending: false,
+    features: [
+      'Natively secure AES-GCM encryption',
+      'Password-derived key derivation (PBKDF2)',
+      'Custom salt and Initialization Vectors (IV)',
+      'Easy Base64 output format for sharing',
+      '100% offline client-side computation'
+    ]
+  },
   
   // Creative Tools
   {
