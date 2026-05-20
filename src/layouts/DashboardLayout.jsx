@@ -82,7 +82,7 @@ const DashboardLayout = ({ children }) => {
             Generator Hub
           </h1>
           <span className="text-[10px] uppercase tracking-wider font-semibold text-slate-400 dark:text-slate-500">
-            Frontend Toolkit
+            Toolkit
           </span>
         </div>
       </div>
@@ -179,7 +179,7 @@ const DashboardLayout = ({ children }) => {
       {/* Footer Details */}
       <div className="p-4 border-t border-slate-200/50 dark:border-slate-800/50 text-center">
         <p className="text-[11px] text-slate-400 dark:text-slate-500 flex items-center justify-center gap-1">
-          Made with <FaHeart className="text-rose-500 animate-pulse" /> on client
+          Generator Hub Toolkit
         </p>
       </div>
     </div>
