@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { FaChevronRight, FaArrowLeft, FaShieldAlt, FaStar, FaBolt, FaListUl, FaQuestionCircle, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaChevronRight, FaArrowLeft, FaShieldAlt, FaStar, FaBolt, FaListUl, FaQuestionCircle, FaChevronDown, FaChevronUp, FaInfoCircle } from 'react-icons/fa';
 import { categories, tools } from '../data/toolsData';
 
 // Import Generator Widgets
@@ -65,8 +65,79 @@ const ToolDetailPage = () => {
     {
       q: `How does the ${currentTool.name} help me?`,
       a: `It eliminates manual effort and saves time by generating instant, optimized, and customizable results. Whether you need secure passwords, creative name concepts, or formatted codes, the ${currentTool.name} provides clean outputs that improve efficiency and productivity.`
+    },
+    {
+      q: `Is my data secure when using the ${currentTool.name}?`,
+      a: `Yes, absolutely. The ${currentTool.name} operates 100% locally inside your web browser. None of your input configurations, key parameters, or generated results are ever sent to, stored in, or processed by external databases or servers.`
+    },
+    {
+      q: `Do I need to install any software to use the ${currentTool.name}?`,
+      a: `No installation, registration, or browser extension is required. The generator is a fully sandboxed, web-based utility that runs instantly on any desktop, tablet, or smartphone device.`
     }
   ];
+
+  const specificInfoMap = {
+    'password-generator': [
+      { title: 'Cryptographic Security', text: 'Generated passwords use secure pseudo-random number generator APIs. Including uppercase, lowercase, numbers, and symbols yields over 95 bits of entropy, making them virtually uncrackable.' },
+      { title: 'Recommended Standards', text: 'For general user accounts, we recommend a minimum length of 12-16 characters containing mixed classes. For administration access, use at least 24 characters.' },
+      { title: 'Zero-Trust Architecture', text: 'Built on zero-trust principles, all generation happens strictly in your browser. Passwords never traverse the internet or get cached in server logs.' }
+    ],
+    'otp-generator': [
+      { title: 'Digit Formats', text: 'Standardized 4-digit and 6-digit options cater to general verification mockups and high-security authentication workflows.' },
+      { title: 'Entropy & Uniqueness', text: 'Random numerical distribution ensures that every code is distinct, reducing collision rates for simulators and mock tests.' },
+      { title: 'Testing Use Cases', text: 'Perfect for sandboxed manual QA testing, backend verification mockups, database seed data, and training simulation environments.' }
+    ],
+    'encryption-key-generator': [
+      { title: 'Entropy Bit Lengths', text: 'Supports standard key sizes of 128-bit (AES-128), 256-bit (industry-standard military grade AES-256), and 512-bit (ultra-high entropy) key configurations.' },
+      { title: 'Output Encoding', text: 'Instantly encodes generated key files into Hexadecimal format (for code integrations) or Base64 (ideal for config files and SSH key chains).' },
+      { title: 'Random Seed Density', text: 'Uses high-entropy browser security modules to generate non-predictable cryptographic seeds safe for production database variables.' }
+    ],
+    'name-generator': [
+      { title: 'Naming Formulas', text: 'Uses smart algorithms combining prefix databases, suffix terms, and industry keywords to build memorable, brandable titles.' },
+      { title: 'Brand Identity', text: 'Creates names aligned with modern digital companies, ensuring a short, catchy, and professional online presence.' },
+      { title: 'Creative Versatility', text: 'Switches algorithms easily to generate fantasy names, gaming handles, or personal business concepts.' }
+    ],
+    'story-title-generator': [
+      { title: 'Genre Formats', text: 'Offers specialized titles matching classic genre rules (e.g. dramatic fantasy hooks, suspenseful mystery plots, or informative tech headlines).' },
+      { title: 'SEO-Optimized Titles', text: 'Blog and technology titles focus on CTR (click-through-rate), viral reach, search intent, and trending layout structures.' },
+      { title: 'Overcoming Writer Block', text: 'Acts as an interactive prompt deck to inspire content creators, novelists, and blog authors with fresh story directions.' }
+    ],
+    'idea-generator': [
+      { title: 'Startup Concepts', text: 'Synthesizes modern market niches, consumer demographics, and software models to pitch innovative business ideas.' },
+      { title: 'Marketing Angles', text: 'Formulates launch methods, referral mechanics, and content ideas designed to expand target user acquisition channels.' },
+      { title: 'Content Themes', text: 'Recommends video themes, blog series, or course content structures customized to build digital authority.' }
+    ],
+    'qr-code-generator': [
+      { title: 'Multi-Data Support', text: 'Generates standard scan matrix cards from web URLs, plaintext, emails, SMS formats, and WiFi login configurations.' },
+      { title: 'Brand Alignment', text: 'Lets you set foreground and background colors to customize the QR style to match corporate presentation guidelines.' },
+      { title: 'Vector Quality (SVG)', text: 'Outputs crisp, responsive vector graphics (SVG/Canvas) preventing scan errors when scaled up or printed.' }
+    ],
+    'barcode-generator': [
+      { title: 'Symbology Standard', text: 'Implements the high-density CODE128 barcode format, the global standard for logistics, shipping labels, and asset tracking.' },
+      { title: 'Alphanumeric Codes', text: 'Encodes letters, numbers, and common symbols, allowing flexible indexing structures matching stock systems.' },
+      { title: 'Canvas Exporters', text: 'Uses hardware-accelerated canvas renders for crisp pixel lines, ensuring clean scans on commercial hand scanners.' }
+    ],
+    'random-number-generator': [
+      { title: 'Uniform Distribution', text: 'Uses uniform distribution algorithms (PRNG) to ensure every digit has an identical selection probability.' },
+      { title: 'Duplicate Filtering', text: 'Features a unique list selector filtering out duplicates, ideal for picking lotteries, raffles, and survey samples.' },
+      { title: 'Dice & Coins', text: 'Includes simulations for standard dice and coin tosses, serving as virtual tools for board game players.' }
+    ],
+    'username-generator': [
+      { title: 'Platform Sanitization', text: 'Strips prohibited characters automatically based on selected networks (e.g. letters and numbers only for Twitter/Twitch).' },
+      { title: 'Styling Modifications', text: 'Applies options like leet-speak swaps (e.g. swapping E to 3) and gamer decor tags (e.g. xX_ _Xx) to fit gaming profiles.' },
+      { title: 'Tag Blends', text: 'Integrates category terms and keywords to construct unique handles that feel personalized and professional.' }
+    ],
+    'hashtag-generator': [
+      { title: 'Keyword Association', text: 'Maps search keywords directly to high-performing hashtag datasets to boost video and post visibility.' },
+      { title: 'Tier Distribution', text: 'Categorizes tags by volume (Popular, Niche, and Trending) to build balanced metadata structures that feed algorithms.' },
+      { title: 'Clipboard Copying', text: 'Compiles all generated tags into a single space-separated string for fast pasting into caption inputs.' }
+    ],
+    'social-media-name-generator': [
+      { title: 'Niche Specialization', text: 'Styles suggestions around high-growth channels (Tech, Gaming, Vlogs, Food) to establish immediate target authority.' },
+      { title: 'Character Constraints', text: 'Ensures name recommendations adhere to strict username character limits enforced by YouTube, Instagram, and Twitch.' },
+      { title: 'Compare Matrix', text: 'Renders results in clean, organized tables with copy features to easily bookmark your top selections.' }
+    ]
+  };
 
   return (
     <div className="space-y-6 py-4">
@@ -140,6 +211,27 @@ const ToolDetailPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Specific Information Section */}
+      {specificInfoMap[toolId] && (
+        <div className="glass-effect p-6 md:p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 space-y-6 mt-8">
+          <h3 className="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100 font-display flex items-center gap-2 border-b border-slate-200/30 dark:border-slate-800/30 pb-4">
+            <FaInfoCircle className="text-violet-500 text-sm md:text-base" /> Specific Information & Insights
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {specificInfoMap[toolId].map((info, idx) => (
+              <div key={idx} className="space-y-2 p-5 rounded-xl bg-slate-50/50 dark:bg-slate-900/50 border border-slate-200/30 dark:border-slate-800/30 transition-all duration-200 hover:border-violet-500/30 dark:hover:border-violet-500/30">
+                <h4 className="text-xs md:text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+                  {info.title}
+                </h4>
+                <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+                  {info.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* FAQ Section */}
       <div className="glass-effect p-6 md:p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 space-y-6 mt-8">
