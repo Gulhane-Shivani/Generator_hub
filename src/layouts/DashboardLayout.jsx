@@ -73,22 +73,54 @@ const DashboardLayout = ({ children }) => {
   const sidebarContent = (
     <div className="flex flex-col h-full select-none">
       {/* Sidebar Header / Brand */}
-      <div className="p-6 border-b border-slate-200/50 dark:border-slate-800/50 flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-600 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-violet-500/30">
-          <FaCompass className="text-xl animate-spin-slow" />
+      <div className="p-6 border-b border-slate-200/50 dark:border-slate-800/50 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-600 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-violet-500/30">
+            <FaCompass className="text-xl animate-spin-slow" />
+          </div>
+          <div>
+            <h1 className="text-lg font-bold bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent font-display leading-tight">
+              Generator Hub
+            </h1>
+            <span className="text-[10px] uppercase tracking-wider font-semibold text-slate-400 dark:text-slate-500">
+              Toolkit
+            </span>
+          </div>
         </div>
-        <div>
-          <h1 className="text-lg font-bold bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent font-display leading-tight">
-            Generator Hub
-          </h1>
-          <span className="text-[10px] uppercase tracking-wider font-semibold text-slate-400 dark:text-slate-500">
-            Toolkit
-          </span>
-        </div>
+        <button
+          onClick={() => setIsSidebarOpen(false)}
+          className="p-2 rounded-xl text-slate-400 hover:text-slate-655 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
+        >
+          <FaTimes />
+        </button>
       </div>
 
       {/* Navigation List */}
       <nav className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
+        {/* Mobile Navigation Links (only visible on mobile screens inside sidebar) */}
+        <div className="md:hidden space-y-1 pb-4 border-b border-slate-200/50 dark:border-slate-800/50">
+          <Link
+            to="/about"
+            className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium text-sm ${
+              location.pathname === '/about'
+                ? 'bg-violet-500/10 text-violet-600 dark:text-violet-400'
+                : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/30 hover:text-slate-950 dark:hover:text-white'
+            }`}
+          >
+            <span>About Us</span>
+          </Link>
+          <Link
+            to="/contact"
+            className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium text-sm ${
+              location.pathname === '/contact'
+                ? 'bg-violet-500/10 text-violet-600 dark:text-violet-400'
+                : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/30 hover:text-slate-950 dark:hover:text-white'
+            }`}
+          >
+            <span>Contact Us</span>
+          </Link>
+        </div>
+
         {/* Home Route */}
         <Link
           to="/"
@@ -130,7 +162,7 @@ const DashboardLayout = ({ children }) => {
 
                   <button
                     onClick={() => toggleCategoryExpand(cat.id)}
-                    className="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                    className="p-2 text-slate-400 hover:text-slate-655 dark:hover:text-slate-200 transition-colors cursor-pointer"
                   >
                     <FaChevronDown 
                       className={`text-[10px] transform transition-transform duration-200 ${
@@ -178,7 +210,7 @@ const DashboardLayout = ({ children }) => {
 
       {/* Footer Details */}
       <div className="p-4 border-t border-slate-200/50 dark:border-slate-800/50 text-center">
-        <p className="text-[11px] text-slate-400 dark:text-slate-500 flex items-center justify-center gap-1">
+        <p className="text-[11px] text-slate-400 dark:text-slate-500 flex items-center justify-center gap-1 font-semibold">
           Generator Hub Toolkit
         </p>
       </div>
@@ -195,12 +227,7 @@ const DashboardLayout = ({ children }) => {
       {/* Toast Alert */}
       <Toast />
 
-      {/* SIDEBAR - Desktop (Fixed) */}
-      <aside className="hidden lg:block w-64 h-screen fixed left-0 top-0 z-30 border-r border-slate-200/50 dark:border-slate-800/50 glass-effect">
-        {sidebarContent}
-      </aside>
-
-      {/* SIDEBAR - Mobile Drawer */}
+      {/* UNIFIED SIDEBAR DRAWER - Desktop & Mobile */}
       <AnimatePresence>
         {isSidebarOpen && (
           <>
@@ -209,21 +236,15 @@ const DashboardLayout = ({ children }) => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsSidebarOpen(false)}
-              className="lg:hidden fixed inset-0 z-40 bg-slate-950/40 backdrop-blur-sm"
+              className="fixed inset-0 z-45 bg-slate-955/40 backdrop-blur-sm"
             ></motion.div>
             <motion.aside
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="lg:hidden fixed left-0 top-0 bottom-0 w-72 z-50 shadow-2xl glass-effect"
+              className="fixed left-0 top-0 bottom-0 w-80 z-50 shadow-2xl glass-effect border-r border-slate-200/50 dark:border-slate-800/50"
             >
-              <button
-                onClick={() => setIsSidebarOpen(false)}
-                className="absolute top-5 right-5 p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
-              >
-                <FaTimes />
-              </button>
               {sidebarContent}
             </motion.aside>
           </>
@@ -231,36 +252,70 @@ const DashboardLayout = ({ children }) => {
       </AnimatePresence>
 
       {/* MAIN CONTAINER */}
-      <div className="flex-1 flex flex-col lg:pl-64 min-h-screen z-10">
+      <div className="flex-1 flex flex-col min-h-screen z-10">
         
         {/* NAVBAR */}
         <header className="sticky top-0 z-20 h-16 w-full glass-navbar flex items-center justify-between px-4 md:px-8 border-b border-slate-200/50 dark:border-slate-800/50 transition-all">
           <div className="flex items-center gap-3">
-            {/* Sidebar Toggle for Mobile */}
+            {/* Sidebar toggle */}
             <button
               onClick={() => setIsSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+              className="p-2 rounded-xl text-slate-650 dark:text-slate-350 hover:bg-slate-105 dark:hover:bg-slate-850 transition-all cursor-pointer"
               aria-label="Open sidebar"
             >
               <FaBars className="text-lg" />
             </button>
             
-            {/* Mobile-only logo */}
-            <Link to="/" className="lg:hidden flex items-center gap-2">
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-violet-600 to-pink-500 flex items-center justify-center text-white text-sm shadow">
                 <FaCompass />
               </div>
-              <span className="font-bold text-sm font-display tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
-                GenHub
+              <span className="font-bold text-sm md:text-base font-display tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+                Generator Hub
               </span>
             </Link>
+
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center gap-6 ml-6">
+              <Link
+                to="/tools"
+                className={`text-sm font-bold transition-colors ${
+                  location.pathname === '/tools'
+                    ? 'text-violet-600 dark:text-violet-400'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-violet-500 dark:hover:text-violet-400'
+                }`}
+              >
+                All Tools
+              </Link>
+              <Link
+                to="/about"
+                className={`text-sm font-bold transition-colors ${
+                  location.pathname === '/about'
+                    ? 'text-violet-600 dark:text-violet-400'
+                    : 'text-slate-605 dark:text-slate-350 hover:text-violet-500 dark:hover:text-violet-400'
+                }`}
+              >
+                About
+              </Link>
+              <Link
+                to="/contact"
+                className={`text-sm font-bold transition-colors ${
+                  location.pathname === '/contact'
+                    ? 'text-violet-600 dark:text-violet-400'
+                    : 'text-slate-605 dark:text-slate-350 hover:text-violet-500 dark:hover:text-violet-400'
+                }`}
+              >
+                Contact
+              </Link>
+            </div>
           </div>
 
           {/* Search bar & Settings */}
-          <div className="flex items-center gap-4 flex-1 md:flex-initial justify-end">
+          <div className="flex items-center gap-4">
             
             {/* Search Input */}
-            <div ref={searchRef} className="relative w-full max-w-[200px] md:max-w-xs">
+            <div ref={searchRef} className="relative w-full max-w-[140px] md:max-w-xs">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <FaSearch className="text-slate-400 text-xs" />
               </div>
@@ -283,7 +338,7 @@ const DashboardLayout = ({ children }) => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-11 right-0 w-72 max-h-80 overflow-y-auto glass-effect rounded-2xl shadow-xl border border-slate-200/50 dark:border-slate-800/50 p-2 space-y-1"
+                    className="absolute top-11 right-0 w-72 max-h-80 overflow-y-auto glass-effect rounded-2xl shadow-xl border border-slate-200/50 dark:border-slate-800/50 p-2 space-y-1 z-50"
                   >
                     <p className="text-[10px] text-slate-400 font-bold px-3 py-1 uppercase tracking-wider">
                       Matched Tools ({filteredTools.length})
@@ -293,9 +348,9 @@ const DashboardLayout = ({ children }) => {
                         <button
                           key={tool.id}
                           onClick={() => handleSearchSelect(tool.id)}
-                          className="w-full text-left flex items-start gap-3 p-2.5 rounded-xl hover:bg-violet-500/10 hover:text-violet-600 dark:hover:text-violet-400 group transition-all"
+                          className="w-full text-left flex items-start gap-3 p-2.5 rounded-xl hover:bg-violet-500/10 hover:text-violet-600 dark:hover:text-violet-400 group transition-all cursor-pointer"
                         >
-                          <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 group-hover:bg-violet-500 group-hover:text-white transition-colors mt-0.5">
+                          <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-850 text-slate-500 dark:text-slate-400 group-hover:bg-violet-500 group-hover:text-white transition-colors mt-0.5">
                             <ToolIcon name={tool.icon} className="text-xs" />
                           </div>
                           <div className="flex-1 min-w-0">
@@ -321,7 +376,7 @@ const DashboardLayout = ({ children }) => {
             {/* Dark/Light Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-xl glass-input text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+              className="p-2.5 rounded-xl glass-input text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
               aria-label="Toggle dark mode"
             >
               {theme === 'dark' ? <FaSun className="text-sm" /> : <FaMoon className="text-sm" />}
@@ -346,14 +401,16 @@ const DashboardLayout = ({ children }) => {
                   Generator Hub
                 </span>
               </div>
-              <p className="text-xs text-slate-400 dark:text-slate-500">
+              <p className="text-xs text-slate-400 dark:text-slate-500 font-semibold">
                 Premium client-side generation tools for developers and creators.
               </p>
             </div>
 
             {/* Navigation links */}
-            <div className="flex flex-wrap justify-center gap-6 text-xs text-slate-500 dark:text-slate-400 font-medium">
+            <div className="flex flex-wrap justify-center gap-6 text-xs text-slate-500 dark:text-slate-400 font-bold">
               <Link to="/" className="hover:text-violet-500 transition-colors">Home</Link>
+              <Link to="/about" className="hover:text-violet-500 transition-colors">About</Link>
+              <Link to="/contact" className="hover:text-violet-500 transition-colors">Contact</Link>
               <Link to="/security" className="hover:text-violet-500 transition-colors">Security</Link>
               <Link to="/creative" className="hover:text-violet-500 transition-colors">Creative</Link>
               <Link to="/utility" className="hover:text-violet-500 transition-colors">Utility</Link>
@@ -373,7 +430,7 @@ const DashboardLayout = ({ children }) => {
               </a>
             </div>
           </div>
-          <div className="text-center mt-6 text-[10px] text-slate-400 dark:text-slate-500 border-t border-slate-200/20 dark:border-slate-800/20 pt-4">
+          <div className="text-center mt-6 text-[10px] text-slate-400 dark:text-slate-500 border-t border-slate-200/20 dark:border-slate-800/20 pt-4 font-semibold">
             &copy; {new Date().getFullYear()} Generator Hub. Designed for local, high-security client-side generation.
           </div>
         </footer>
