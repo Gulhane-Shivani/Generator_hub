@@ -277,10 +277,10 @@ const DashboardLayout = ({ children }) => {
             </Link>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center gap-6 ml-6">
+            <div className="hidden md:flex items-center gap-8 ml-8">
               <Link
                 to="/tools"
-                className={`text-sm font-bold transition-colors ${
+                className={`text-sm md:text-[15px] font-bold transition-colors ${
                   location.pathname === '/tools'
                     ? 'text-violet-600 dark:text-violet-400'
                     : 'text-slate-600 dark:text-slate-300 hover:text-violet-500 dark:hover:text-violet-400'
@@ -290,20 +290,20 @@ const DashboardLayout = ({ children }) => {
               </Link>
               <Link
                 to="/about"
-                className={`text-sm font-bold transition-colors ${
+                className={`text-sm md:text-[15px] font-bold transition-colors ${
                   location.pathname === '/about'
                     ? 'text-violet-600 dark:text-violet-400'
-                    : 'text-slate-605 dark:text-slate-350 hover:text-violet-500 dark:hover:text-violet-400'
+                    : 'text-slate-600 dark:text-slate-350 hover:text-violet-500 dark:hover:text-violet-400'
                 }`}
               >
                 About
               </Link>
               <Link
                 to="/contact"
-                className={`text-sm font-bold transition-colors ${
+                className={`text-sm md:text-[15px] font-bold transition-colors ${
                   location.pathname === '/contact'
                     ? 'text-violet-600 dark:text-violet-400'
-                    : 'text-slate-605 dark:text-slate-350 hover:text-violet-500 dark:hover:text-violet-400'
+                    : 'text-slate-600 dark:text-slate-350 hover:text-violet-500 dark:hover:text-violet-400'
                 }`}
               >
                 Contact
