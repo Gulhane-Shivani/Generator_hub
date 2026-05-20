@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { FaChevronRight, FaArrowLeft, FaShieldAlt, FaStar, FaBolt, FaListUl } from 'react-icons/fa';
+import { FaChevronRight, FaArrowLeft, FaShieldAlt, FaStar, FaBolt, FaListUl, FaQuestionCircle, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { categories, tools } from '../data/toolsData';
 
 // Import Generator Widgets
@@ -19,6 +19,7 @@ import SocialMediaNameGenerator from '../tools/SocialMediaNameGenerator';
 
 const ToolDetailPage = () => {
   const { toolId } = useParams();
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
   const currentTool = tools.find((t) => t.id === toolId);
   if (!currentTool) {
@@ -44,6 +45,28 @@ const ToolDetailPage = () => {
   };
 
   const widget = componentMap[toolId] || <div className="text-slate-400">Tool widget coming soon.</div>;
+
+  const toggleFaq = (index) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      q: `What is the ${currentTool.name}?`,
+      a: `The ${currentTool.name} is a premium digital utility designed to ${currentTool.description.toLowerCase().replace(/\.$/, '')}. It runs 100% client-side in your browser, ensuring your inputs and data remain private and secure.`
+    },
+    {
+      q: `How do I use the ${currentTool.name}?`,
+      a: `Using the ${currentTool.name} is quick and simple:
+      1. Configure your settings and preferences using the input fields on the screen.
+      2. Click the generate button to process your inputs.
+      3. Use the one-click copy option or download feature to save your outputs instantly.`
+    },
+    {
+      q: `How does the ${currentTool.name} help me?`,
+      a: `It eliminates manual effort and saves time by generating instant, optimized, and customizable results. Whether you need secure passwords, creative name concepts, or formatted codes, the ${currentTool.name} provides clean outputs that improve efficiency and productivity.`
+    }
+  ];
 
   return (
     <div className="space-y-6 py-4">
@@ -115,6 +138,49 @@ const ToolDetailPage = () => {
             <FaBolt className="text-violet-500 text-xs animate-pulse" />
             Runs client-side in sandboxed frame.
           </div>
+        </div>
+      </div>
+
+      {/* FAQ Section */}
+      <div className="glass-effect p-6 md:p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 space-y-6 mt-8">
+        <h3 className="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100 font-display flex items-center gap-2 border-b border-slate-200/30 dark:border-slate-800/30 pb-4">
+          <FaQuestionCircle className="text-violet-500 text-sm md:text-base" /> Frequently Asked Questions
+        </h3>
+        
+        <div className="space-y-4">
+          {faqs.map((faq, index) => {
+            const isOpen = openFaqIndex === index;
+            return (
+              <div 
+                key={index} 
+                className="border-b border-slate-200/30 dark:border-slate-800/30 pb-4 last:border-0 last:pb-0"
+              >
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full flex justify-between items-center text-left py-2 text-sm md:text-base font-semibold text-slate-700 dark:text-slate-300 hover:text-violet-500 dark:hover:text-violet-400 transition-colors cursor-pointer"
+                >
+                  <span>{faq.q}</span>
+                  {isOpen ? (
+                    <FaChevronUp className="text-violet-500 text-xs flex-shrink-0" />
+                  ) : (
+                    <FaChevronDown className="text-slate-400 dark:text-slate-600 text-xs flex-shrink-0" />
+                  )}
+                </button>
+                
+                <div 
+                  className={`grid transition-all duration-300 ease-in-out overflow-hidden ${
+                    isOpen ? 'grid-rows-[1fr] opacity-100 mt-2' : 'grid-rows-[0fr] opacity-0'
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium whitespace-pre-line">
+                      {faq.a}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
