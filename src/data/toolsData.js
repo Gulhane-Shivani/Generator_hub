@@ -204,6 +204,21 @@ export const tools = [
       'Visual dice-rolling / picker feedback'
     ]
   },
+  {
+    id: 'color-palette-generator',
+    category: 'utility',
+    name: 'Color Palette Generator',
+    description: 'Generate harmonious color schemes using monochromatic, analogous, complementary, or triadic color patterns.',
+    icon: 'FaPalette',
+    trending: true,
+    features: [
+      'Color harmony methods (Analogous, Monochromatic, Triadic, Compound)',
+      'Base color selection via custom interactive color pickers',
+      'One-click clipboard copy for hexadecimal values',
+      'Dynamic live UI mockup component showing active colors',
+      'Export variables code formats (CSS, SCSS, Tailwind, JSON)'
+    ]
+  },
   
   // Social Tools
   {
@@ -243,6 +258,21 @@ export const tools = [
       'Targeted for YouTube, Instagram, and Gaming handles',
       'Industry niches: Tech, Gaming, Vlog, Cooking, Fitness',
       'Sleek suggestion table view with copy features'
+    ]
+  },
+  {
+    id: 'bio-generator',
+    category: 'social',
+    name: 'Bio Generator',
+    description: 'Generate professional, funny, or creative social media bios for Twitter, LinkedIn, Instagram, and TikTok.',
+    icon: 'FaUserAlt',
+    trending: true,
+    features: [
+      'Pre-configured templates for 4 popular social platforms',
+      '5 distinct profile tones (Professional, Funny, Creative, Minimal, Bold)',
+      'Integrate custom keywords or career niches',
+      'Optional emoji decorators and link call-to-actions (CTAs)',
+      'Instant character-length counts and clipboard copying features'
     ]
   },
   

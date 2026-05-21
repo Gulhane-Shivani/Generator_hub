@@ -21,6 +21,8 @@ import TextEncryptDecrypt from '../tools/TextEncryptDecrypt';
 import JsonFormatter from '../tools/JsonFormatter';
 import Base64EncoderDecoder from '../tools/Base64EncoderDecoder';
 import ApiKeyGenerator from '../tools/ApiKeyGenerator';
+import BioGenerator from '../tools/BioGenerator';
+import ColorPaletteGenerator from '../tools/ColorPaletteGenerator';
 
 const ToolDetailPage = () => {
   const { toolId } = useParams();
@@ -51,7 +53,9 @@ const ToolDetailPage = () => {
     'social-media-name-generator': <SocialMediaNameGenerator />,
     'json-formatter': <JsonFormatter />,
     'base64-encoder-decoder': <Base64EncoderDecoder />,
-    'api-key-generator': <ApiKeyGenerator />
+    'api-key-generator': <ApiKeyGenerator />,
+    'bio-generator': <BioGenerator />,
+    'color-palette-generator': <ColorPaletteGenerator />
   };
 
   const widget = componentMap[toolId] || <div className="text-slate-400">Tool widget coming soon.</div>;
@@ -156,6 +160,16 @@ const ToolDetailPage = () => {
       { title: 'Niche Specialization', text: 'Styles suggestions around high-growth channels (Tech, Gaming, Vlogs, Food) to establish immediate target authority.' },
       { title: 'Character Constraints', text: 'Ensures name recommendations adhere to strict username character limits enforced by YouTube, Instagram, and Twitch.' },
       { title: 'Compare Matrix', text: 'Renders results in clean, organized tables with copy features to easily bookmark your top selections.' }
+    ],
+    'bio-generator': [
+      { title: 'Multi-platform support', text: 'Tailors templates specifically to constraints of Twitter, LinkedIn, Instagram, and TikTok.' },
+      { title: 'Tone variations', text: 'Supports 5 tones including professional, creative, funny, minimalist, and bold templates.' },
+      { title: 'Interactive keywords', text: 'Incorporates custom roles and skills into generated suggestions dynamically.' }
+    ],
+    'color-palette-generator': [
+      { title: 'Color harmonies', text: 'Calculates monochromatic, analogous, complementary, triadic, and compound patterns.' },
+      { title: 'Live preview mockups', text: 'Includes a preview widget showing how active colors map to a real UI design.' },
+      { title: 'Multiple export formats', text: 'Outputs code snippets directly as CSS, SCSS, Tailwind config, or raw JSON arrays.' }
     ],
     'json-formatter': [
       { title: 'JSON Validation', text: 'Uses standard browser JSON parses. Any validation error shows descriptive parser reports, pointing exactly to where parsing failed.' },
