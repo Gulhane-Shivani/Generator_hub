@@ -80,7 +80,19 @@ const LandingPage = () => {
         >
           Generate cryptographically secure passwords, barcode labels, hashtags, brand names, and more. 100% private, free, and instantly rendered in your browser.
         </motion.p>
-        {/* Explore Generators button removed as requested */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className="pt-4 flex justify-center gap-4"
+        >
+          <Link
+            to="/tools"
+            className="py-3 px-8 rounded-2xl bg-violet-600 hover:bg-violet-700 text-white font-bold shadow-lg shadow-violet-500/30 transition-all flex items-center gap-2 text-sm cursor-pointer"
+          >
+            Explore Tools <FaArrowRight className="text-xs" />
+          </Link>
+        </motion.div>
       </section>
 
       {/* 2. SEARCH TOOL SECTION */}
