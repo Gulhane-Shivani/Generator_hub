@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaShieldAlt, FaLightbulb, FaSlidersH, FaShareAlt, FaCode,
-  FaSearch, FaFire, FaBolt, FaLock, FaMobile, FaHandSparkles, FaArrowRight 
+  FaSearch, FaFire, FaBolt, FaLock, FaMobile, FaHandSparkles, FaArrowRight,
+  FaQuestionCircle, FaUserCheck, FaChevronDown, FaCheckCircle, FaLaptopCode,
+  FaUserEdit, FaGamepad, FaBriefcase
 } from 'react-icons/fa';
 import { categories, tools } from '../data/toolsData';
 import ToolIcon from '../components/ToolIcon';
@@ -11,6 +13,7 @@ import ToolIcon from '../components/ToolIcon';
 const LandingPage = () => {
   const navigate = useNavigate();
   const [localSearch, setLocalSearch] = useState('');
+  const [activeFaq, setActiveFaq] = useState(null);
 
   const trendingTools = tools.filter(tool => tool.trending);
 
@@ -209,7 +212,7 @@ const LandingPage = () => {
           <h2 className="text-xl md:text-2xl font-extrabold tracking-tight font-display flex items-center gap-2">
             <FaFire className="text-orange-500 text-lg animate-pulse" /> Popular Generators
           </h2>
-          <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+          <span className="text-xs uppercase font-bold text-slate-400 tracking-wider">
             Most Visited
           </span>
         </div>
@@ -226,17 +229,17 @@ const LandingPage = () => {
                 <div className="space-y-3">
                   <div className="flex justify-between items-start">
                     <div className="p-2.5 rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400 group-hover:bg-violet-600 group-hover:text-white transition-colors">
-                      <ToolIcon name={tool.icon} className="text-sm" />
+                      <ToolIcon name={tool.icon} className="text-base" />
                     </div>
-                    <span className={`text-[8px] font-extrabold uppercase px-1.5 py-0.5 rounded text-white bg-gradient-to-r ${catInfo?.gradient || 'from-violet-500 to-indigo-500'}`}>
+                    <span className={`text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded text-white bg-gradient-to-r ${catInfo?.gradient || 'from-violet-500 to-indigo-500'}`}>
                       {tool.category}
                     </span>
                   </div>
                   <div>
-                    <h3 className="text-xs font-bold text-slate-800 dark:text-slate-200 group-hover:text-violet-600 dark:group-hover:text-violet-400">
+                    <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 group-hover:text-violet-600 dark:group-hover:text-violet-400">
                       {tool.name}
                     </h3>
-                    <p className="text-[10px] text-slate-400 line-clamp-2 mt-1 leading-relaxed">
+                    <p className="text-xs text-slate-400 line-clamp-2 mt-1 leading-relaxed">
                       {tool.description}
                     </p>
                   </div>
@@ -253,32 +256,219 @@ const LandingPage = () => {
           <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-2">
             <FaLock className="text-base" />
           </div>
-          <h4 className="text-xs font-bold text-slate-800 dark:text-slate-200">100% Private & Secure</h4>
-          <p className="text-[10px] text-slate-400 max-w-[200px]">All generation runs client-side. No tracking APIs.</p>
+          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">100% Private & Secure</h4>
+          <p className="text-xs text-slate-400 max-w-[200px]">All generation runs client-side. No tracking APIs.</p>
         </div>
 
         <div className="space-y-2 flex flex-col items-center">
           <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center mb-2">
             <FaBolt className="text-base" />
           </div>
-          <h4 className="text-xs font-bold text-slate-800 dark:text-slate-200">Ultra Fast Speed</h4>
-          <p className="text-[10px] text-slate-400 max-w-[200px]">Instant rendering with zero server roundtrips.</p>
+          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">Ultra Fast Speed</h4>
+          <p className="text-xs text-slate-400 max-w-[200px]">Instant rendering with zero server roundtrips.</p>
         </div>
 
         <div className="space-y-2 flex flex-col items-center">
           <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center mb-2">
             <FaMobile className="text-base" />
           </div>
-          <h4 className="text-xs font-bold text-slate-800 dark:text-slate-200">Fully Responsive UI</h4>
-          <p className="text-[10px] text-slate-400 max-w-[200px]">Beautiful layouts tested on mobile and desktops.</p>
+          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">Fully Responsive UI</h4>
+          <p className="text-xs text-slate-400 max-w-[200px]">Beautiful layouts tested on mobile and desktops.</p>
         </div>
 
         <div className="space-y-2 flex flex-col items-center">
           <div className="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-500 flex items-center justify-center mb-2">
             <FaHandSparkles className="text-base" />
           </div>
-          <h4 className="text-xs font-bold text-slate-800 dark:text-slate-200">Zero Configuration</h4>
-          <p className="text-[10px] text-slate-400 max-w-[200px]">Intuitive controls, sliders, and copy toggles.</p>
+          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">Zero Configuration</h4>
+          <p className="text-xs text-slate-400 max-w-[200px]">Intuitive controls, sliders, and copy toggles.</p>
+        </div>
+      </section>
+
+      {/* 6. WHO CAN USE THIS TOOL SECTION */}
+      <section className="space-y-8 select-none">
+        <div className="text-center space-y-2">
+          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight font-display bg-gradient-to-r from-violet-600 to-pink-500 bg-clip-text text-transparent">
+            Who Can Use Generator Hub?
+          </h2>
+          <p className="text-sm md:text-base text-slate-400 font-medium max-w-xl mx-auto">
+            Tailored generation tools custom-built to accelerate workflows for all creators, builders, and professionals.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            {
+              icon: <FaLaptopCode className="text-xl" />,
+              title: "Developers & Architects",
+              desc: "Instantly prettify/validate JSON, run Base64 transformations, and safely compile cryptographically strong Hex/Base64 keys.",
+              gradient: "from-blue-500/10 to-indigo-500/10 hover:border-indigo-500/40 text-indigo-500"
+            },
+            {
+              icon: <FaUserEdit className="text-xl" />,
+              title: "Creators & Influencers",
+              desc: "Accelerate your social growth with high-performing hashtags, creative profile bios, channel names, and viral titles.",
+              gradient: "from-pink-500/10 to-rose-500/10 hover:border-rose-500/40 text-rose-500"
+            },
+            {
+              icon: <FaGamepad className="text-xl" />,
+              title: "Gamers & Enthusiasts",
+              desc: "Roll cool styled gamer handles, leet speak conversions, custom tags, or check the security score of your online accounts.",
+              gradient: "from-emerald-500/10 to-teal-500/10 hover:border-teal-500/40 text-teal-500"
+            },
+            {
+              icon: <FaBriefcase className="text-xl" />,
+              title: "Professionals & Teams",
+              desc: "Seamlessly generate standard barcodes, customizable download-ready QR codes, and random seed inputs for presentations.",
+              gradient: "from-amber-500/10 to-orange-500/10 hover:border-orange-500/40 text-orange-500"
+            }
+          ].map((persona, idx) => (
+            <motion.div
+              key={idx}
+              whileHover={{ y: -6 }}
+              className={`glass-effect p-6 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 flex flex-col justify-between transition-all bg-gradient-to-tr ${persona.gradient} shadow-sm hover:shadow-md`}
+            >
+              <div className="space-y-4">
+                <div className={`w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/30 dark:border-slate-800/30 flex items-center justify-center shadow-sm ${persona.text}`}>
+                  {persona.icon}
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-base font-bold text-slate-800 dark:text-white font-display">
+                    {persona.title}
+                  </h3>
+                  <p className="text-xs md:text-sm text-slate-400 dark:text-slate-400 leading-relaxed font-semibold">
+                    {persona.desc}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* 7. TRUST & FEATURES DETAIL SHOWCASE (ATTRACT PEOPLE) */}
+      <section className="glass-effect rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 shadow relative overflow-hidden select-none">
+        <div className="absolute top-[-100px] right-[-100px] w-64 h-64 bg-pink-500/10 rounded-full blur-[80px] pointer-events-none"></div>
+        <div className="absolute bottom-[-100px] left-[-100px] w-64 h-64 bg-violet-600/10 rounded-full blur-[80px] pointer-events-none"></div>
+
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6 text-left">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-600 dark:text-violet-400 text-sm font-bold uppercase tracking-wider">
+              <FaShieldAlt className="text-xs" /> Engineered for absolute privacy
+            </div>
+            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight font-display text-slate-900 dark:text-white leading-[1.15]">
+              Generations you can <span className="bg-gradient-to-r from-violet-600 to-pink-500 bg-clip-text text-transparent">trust implicitly</span>
+            </h2>
+            <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+              We believe online security shouldn't require sending data to distant clouds. All computation, key-derivation, encoding, and random generations run instantly in your browser sandbox. 
+            </p>
+
+            <ul className="space-y-3.5 pt-2">
+              {[
+                "Web Crypto API (window.crypto) high-entropy standard",
+                "Completely offline capability with zero server log caching",
+                "Fully open, free, zero tracking trackers, zero ads"
+              ].map((item, index) => (
+                <li key={index} className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-350">
+                  <FaCheckCircle className="text-emerald-500 text-sm flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Graphical Mock UI showing live trust factors */}
+          <div className="p-6 rounded-2xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50 dark:bg-slate-950/60 space-y-4 shadow-inner text-left font-sans">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200/30 dark:border-slate-800/30">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              </div>
+              <span className="text-[11px] font-extrabold uppercase text-slate-400 dark:text-slate-500 bg-slate-200/30 dark:bg-slate-900 px-2 py-0.5 rounded border border-slate-200/20">
+                sandbox_agent.log
+              </span>
+            </div>
+
+            <div className="space-y-2.5 font-mono text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed select-all">
+              <p className="text-emerald-500 font-bold">✔ [SYSTEM] Web Cryptography Engine successfully initiated</p>
+              <p>ℹ [API] entropy_pool: cryptographically secure window.crypto</p>
+              <p>ℹ [TRANSIT] remote_endpoint: NULL (No data packages sent over network)</p>
+              <p className="text-violet-500 font-bold">ℹ [PRIVACY] sandbox state: 100% safe client isolation</p>
+              <div className="pt-2 w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-full rounded-full bg-gradient-to-r from-violet-600 to-pink-500" style={{ width: '100%' }}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. INTERACTIVE FAQ ACCORDION SECTION */}
+      <section className="space-y-8 select-none max-w-4xl mx-auto">
+        <div className="text-center space-y-2">
+          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight font-display flex items-center justify-center gap-2">
+            <FaQuestionCircle className="text-violet-500" /> Frequently Asked Questions
+          </h2>
+          <p className="text-sm md:text-base text-slate-400 font-medium">
+            Got questions? We've got answers. Explore how our tools provide absolute privacy and speed.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          {[
+            {
+              question: "Is my generated data sent to any remote servers?",
+              answer: "Absolutely not! Every single generator tool (passwords, OTPs, QR codes, name generators, JSON formatters) runs entirely client-side inside your browser sandbox. No input or output data is ever transmitted, ensuring 100% absolute privacy."
+            },
+            {
+              question: "How are the generated values secured?",
+              answer: "We utilize the modern Web Cryptography API (window.crypto) where cryptographic-level outputs are required. This ensures maximum high-entropy values that are completely random and virtually impossible for supercomputers to predict."
+            },
+            {
+              question: "Can I use the outputs commercially?",
+              answer: "Yes, completely! All generated names, passwords, code snippets, barcodes, and dynamic color palettes are 100% royalty-free and yours to use for personal or commercial projects without any limitations."
+            },
+            {
+              question: "Why is the rendering and execution so instant?",
+              answer: "Since all generations are processed inside your local browser virtual machine, there are zero server round-trip network lags. You get light-speed generations instantly."
+            }
+          ].map((faq, idx) => {
+            const isOpen = activeFaq === idx;
+            return (
+              <div 
+                key={idx}
+                className="glass-effect rounded-2xl border border-slate-200/50 dark:border-slate-800/50 overflow-hidden transition-all duration-300 hover:border-violet-500/30"
+              >
+                <button
+                  onClick={() => setActiveFaq(isOpen ? null : idx)}
+                  className="w-full px-6 py-5 flex items-center justify-between text-left cursor-pointer hover:bg-slate-100/10 transition-colors"
+                >
+                  <span className="text-sm md:text-base font-bold text-slate-800 dark:text-slate-200 font-display pr-4">
+                    {faq.question}
+                  </span>
+                  <FaChevronDown 
+                    className={`text-slate-400 text-xs transform transition-transform duration-300 ${isOpen ? 'rotate-180 text-violet-500' : ''}`}
+                  />
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-5 pt-1 text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-semibold border-t border-slate-200/20 dark:border-slate-800/20">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
       </section>
 
