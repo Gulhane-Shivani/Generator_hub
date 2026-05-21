@@ -153,6 +153,41 @@ const LandingPage = () => {
           </motion.div>
         )}
       </section>
+      
+      {/* 5. FEATURES / WHY US */}
+      <section className="glass-effect rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 shadow grid grid-cols-1 md:grid-cols-4 gap-6 text-center select-none">
+        <div className="space-y-2 flex flex-col items-center">
+          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-2">
+            <FaLock className="text-base" />
+          </div>
+          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">100% Private & Secure</h4>
+          <p className="text-xs text-slate-400 max-w-[200px]">All generation runs client-side. No tracking APIs.</p>
+        </div>
+
+        <div className="space-y-2 flex flex-col items-center">
+          <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center mb-2">
+            <FaBolt className="text-base" />
+          </div>
+          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">Ultra Fast Speed</h4>
+          <p className="text-xs text-slate-400 max-w-[200px]">Instant rendering with zero server roundtrips.</p>
+        </div>
+
+        <div className="space-y-2 flex flex-col items-center">
+          <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center mb-2">
+            <FaMobile className="text-base" />
+          </div>
+          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">Fully Responsive UI</h4>
+          <p className="text-xs text-slate-400 max-w-[200px]">Beautiful layouts tested on mobile and desktops.</p>
+        </div>
+
+        <div className="space-y-2 flex flex-col items-center">
+          <div className="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-500 flex items-center justify-center mb-2">
+            <FaHandSparkles className="text-base" />
+          </div>
+          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">Zero Configuration</h4>
+          <p className="text-xs text-slate-400 max-w-[200px]">Intuitive controls, sliders, and copy toggles.</p>
+        </div>
+      </section>
 
       {/* 3. CATEGORIES SECTION */}
       <section id="categories" className="space-y-6">
@@ -250,40 +285,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* 5. FEATURES / WHY US */}
-      <section className="glass-effect rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 shadow grid grid-cols-1 md:grid-cols-4 gap-6 text-center select-none">
-        <div className="space-y-2 flex flex-col items-center">
-          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-2">
-            <FaLock className="text-base" />
-          </div>
-          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">100% Private & Secure</h4>
-          <p className="text-xs text-slate-400 max-w-[200px]">All generation runs client-side. No tracking APIs.</p>
-        </div>
-
-        <div className="space-y-2 flex flex-col items-center">
-          <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center mb-2">
-            <FaBolt className="text-base" />
-          </div>
-          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">Ultra Fast Speed</h4>
-          <p className="text-xs text-slate-400 max-w-[200px]">Instant rendering with zero server roundtrips.</p>
-        </div>
-
-        <div className="space-y-2 flex flex-col items-center">
-          <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center mb-2">
-            <FaMobile className="text-base" />
-          </div>
-          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">Fully Responsive UI</h4>
-          <p className="text-xs text-slate-400 max-w-[200px]">Beautiful layouts tested on mobile and desktops.</p>
-        </div>
-
-        <div className="space-y-2 flex flex-col items-center">
-          <div className="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-500 flex items-center justify-center mb-2">
-            <FaHandSparkles className="text-base" />
-          </div>
-          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200">Zero Configuration</h4>
-          <p className="text-xs text-slate-400 max-w-[200px]">Intuitive controls, sliders, and copy toggles.</p>
-        </div>
-      </section>
+      
 
       {/* 6. WHO CAN USE THIS TOOL SECTION */}
       <section className="space-y-8 select-none">
