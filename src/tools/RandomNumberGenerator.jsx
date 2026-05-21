@@ -76,7 +76,7 @@ const RandomNumberGenerator = () => {
     <div className="space-y-6">
       {/* Parameter Settings */}
       <div className="glass-effect p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 grid grid-cols-1 md:grid-cols-2 gap-6">
-        
+
         {/* Ranges */}
         <div className="space-y-4">
           <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
@@ -131,7 +131,7 @@ const RandomNumberGenerator = () => {
             <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 mb-4">
               Unique Rules
             </h3>
-            
+
             <label className="flex items-center justify-between p-3.5 rounded-xl border border-slate-200/50 dark:border-slate-800/50 hover:bg-slate-50/50 dark:hover:bg-slate-800/20 cursor-pointer transition-all">
               <div>
                 <span className="block text-sm font-semibold text-slate-700 dark:text-slate-300">Enforce Unique Values</span>

@@ -33,7 +33,7 @@ const contentBases = [
 const IdeaGenerator = () => {
   const { showToast } = () => useApp();
   const app = useApp();
-  const toastTrigger = app ? app.showToast : () => {};
+  const toastTrigger = app ? app.showToast : () => { };
 
   const [category, setCategory] = useState('startup');
   const [currentIdea, setCurrentIdea] = useState({ text: '', icon: null });
@@ -82,11 +82,10 @@ const IdeaGenerator = () => {
           <button
             key={item.id}
             onClick={() => setCategory(item.id)}
-            className={`py-2 px-4 rounded-xl border text-xs font-semibold flex items-center gap-2 transition-all ${
-              category === item.id
+            className={`py-2 px-4 rounded-xl border text-xs font-semibold flex items-center gap-2 transition-all ${category === item.id
                 ? 'border-violet-500 bg-violet-500/10 text-violet-600 dark:text-violet-400 font-bold'
                 : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900'
-            }`}
+              }`}
           >
             {item.icon}
             {item.label}

@@ -174,10 +174,10 @@ const ColorPaletteGenerator = () => {
 
   return (
     <div className="space-y-6">
-      
+
       {/* Settings Row */}
       <div className="glass-effect p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 flex flex-col md:flex-row md:items-center justify-between gap-4 select-none">
-        
+
         {/* Base Color Picker */}
         <div className="flex items-center gap-3">
           <div className="relative w-12 h-12 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 flex-shrink-0 cursor-pointer shadow">
@@ -210,11 +210,10 @@ const ColorPaletteGenerator = () => {
             <button
               key={item.id}
               onClick={() => setType(item.id)}
-              className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
-                type === item.id
+              className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${type === item.id
                   ? 'border-violet-500 bg-violet-500/10 text-violet-600 dark:text-violet-400 font-bold'
                   : 'border-slate-200 dark:border-slate-800 text-slate-650 dark:text-slate-450 hover:bg-slate-50 dark:hover:bg-slate-900'
-              }`}
+                }`}
             >
               {item.label}
             </button>
@@ -244,7 +243,7 @@ const ColorPaletteGenerator = () => {
               className="h-32 w-full transition-transform duration-300 group-hover:scale-[1.03]"
               style={{ backgroundColor: color }}
             ></div>
-            
+
             {/* Metadata */}
             <div className="p-3 bg-white dark:bg-slate-900 flex-1 flex flex-col justify-between items-center text-center">
               <span className="font-mono text-xs font-bold text-slate-800 dark:text-slate-200 uppercase select-all">
@@ -268,7 +267,7 @@ const ColorPaletteGenerator = () => {
 
       {/* Export Panel & Mock UI Preview Container */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-        
+
         {/* Mock UI Preview Panel (Takes 2 Columns) */}
         <div className="lg:col-span-2 glass-effect p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 space-y-4">
           <h3 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest flex items-center gap-2 pb-2 border-b border-slate-200/30 dark:border-slate-800/30">
@@ -278,9 +277,9 @@ const ColorPaletteGenerator = () => {
           {/* Render Mock Component */}
           {palette.length >= 5 && (
             <div className="p-6 rounded-2xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-55 dark:bg-slate-955 space-y-4 shadow-inner">
-              
+
               {/* Header */}
-              <div 
+              <div
                 className="p-4 rounded-xl text-white flex items-center justify-between shadow-sm select-none"
                 style={{ backgroundColor: palette[0] }}
               >
@@ -288,7 +287,7 @@ const ColorPaletteGenerator = () => {
                   <h4 className="text-sm font-bold tracking-tight">System Portal</h4>
                   <p className="text-[10px] text-white/80">Active palette dynamic theme engine</p>
                 </div>
-                <div 
+                <div
                   className="px-2.5 py-0.5 rounded text-[8px] font-extrabold uppercase text-white/90"
                   style={{ backgroundColor: palette[1] }}
                 >
@@ -312,7 +311,7 @@ const ColorPaletteGenerator = () => {
                     </button>
                     <button
                       className="px-3 py-1.5 rounded-lg text-[9px] font-bold border transition-all"
-                      style={{ 
+                      style={{
                         borderColor: palette[3],
                         color: palette[3]
                       }}
@@ -325,7 +324,7 @@ const ColorPaletteGenerator = () => {
                 <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/30 dark:border-slate-800/30 space-y-3">
                   <h5 className="text-xs font-bold text-slate-800 dark:text-slate-250">Metrics Summary</h5>
                   <div className="flex gap-2">
-                    <div 
+                    <div
                       className="w-2.5 h-2.5 rounded-full animate-pulse"
                       style={{ backgroundColor: palette[4] }}
                     ></div>
@@ -333,12 +332,12 @@ const ColorPaletteGenerator = () => {
                       Status Sync Indicator
                     </span>
                   </div>
-                  
+
                   {/* Decorative Progress bar */}
                   <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                    <div 
+                    <div
                       className="h-full rounded-full"
-                      style={{ 
+                      style={{
                         backgroundColor: palette[1],
                         width: '70%'
                       }}
@@ -356,7 +355,7 @@ const ColorPaletteGenerator = () => {
             <h3 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest flex items-center gap-2">
               <FaCode className="text-violet-500" /> Export Options
             </h3>
-            
+
             {/* Format selection */}
             <div className="flex flex-col gap-1.5">
               {[
@@ -378,7 +377,7 @@ const ColorPaletteGenerator = () => {
               ))}
             </div>
           </div>
-          
+
           <div className="pt-2 text-[10px] text-slate-400 font-semibold flex items-center gap-1.5 leading-relaxed">
             <FaPalette className="text-violet-500 text-xs animate-bounce" /> Click any color card above to copy HEX values.
           </div>
@@ -400,7 +399,7 @@ const ColorPaletteGenerator = () => {
                 Close
               </button>
             </div>
-            
+
             <textarea
               readOnly
               value={getExportText()}

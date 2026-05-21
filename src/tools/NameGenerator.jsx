@@ -108,7 +108,7 @@ const NameGenerator = () => {
     <div className="space-y-6">
       {/* Mode & Keywords Configuration */}
       <div className="glass-effect p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 space-y-4">
-        
+
         {/* Toggle Mode */}
         <div>
           <label className="block text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">
@@ -123,11 +123,10 @@ const NameGenerator = () => {
               <button
                 key={item.id}
                 onClick={() => setMode(item.id)}
-                className={`py-2 px-4 rounded-xl border text-xs font-semibold transition-all ${
-                  mode === item.id
+                className={`py-2 px-4 rounded-xl border text-xs font-semibold transition-all ${mode === item.id
                     ? 'border-violet-500 bg-violet-500/10 text-violet-600 dark:text-violet-400 font-bold'
                     : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900'
-                }`}
+                  }`}
               >
                 {item.label}
               </button>
@@ -181,7 +180,7 @@ const NameGenerator = () => {
                 <span className="block text-sm font-bold text-slate-800 dark:text-slate-100 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
                   {name}
                 </span>
-                
+
                 <div className="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   {copiedIndex === idx ? (
                     <FaCheck className="text-emerald-500 text-[10px]" />
