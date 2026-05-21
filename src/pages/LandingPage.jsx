@@ -99,7 +99,7 @@ const LandingPage = () => {
       </section>
 
       {/* 2. SEARCH TOOL SECTION */}
-      <section className="max-w-xl mx-auto space-y-4">
+      <section className="max-w-xl mx-auto space-y-4 -mt-6 md:-mt-8">
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
             <FaSearch className="text-slate-400 text-sm" />
