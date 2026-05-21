@@ -30,6 +30,14 @@ export const categories = [
     icon: 'FaShareAlt',
     gradient: 'from-emerald-500 to-teal-500',
     hoverGradient: 'hover:shadow-emerald-500/20',
+  },
+  {
+    id: 'developer',
+    name: 'Developer Tools',
+    description: 'Format code payloads, encode/decode strings, and generate secure developer credentials.',
+    icon: 'FaCode',
+    gradient: 'from-amber-500 to-orange-600',
+    hoverGradient: 'hover:shadow-amber-500/20',
   }
 ];
 
@@ -235,6 +243,54 @@ export const tools = [
       'Targeted for YouTube, Instagram, and Gaming handles',
       'Industry niches: Tech, Gaming, Vlog, Cooking, Fitness',
       'Sleek suggestion table view with copy features'
+    ]
+  },
+  
+  // Developer Tools
+  {
+    id: 'json-formatter',
+    category: 'developer',
+    name: 'JSON Formatter',
+    description: 'Format, validate, prettify, and minify your JSON data objects instantly.',
+    icon: 'FaFileCode',
+    trending: true,
+    features: [
+      'Prettify/Format raw JSON strings',
+      'Custom tab indentation sizes (2, 4, 8 spaces)',
+      'Compact JSON minification output',
+      'Built-in real-time validation and error reports',
+      'Instant copy-to-clipboard actions',
+      'Payload sizing and key-counting stats'
+    ]
+  },
+  {
+    id: 'base64-encoder-decoder',
+    category: 'developer',
+    name: 'Base64 Encoder/Decoder',
+    description: 'Safely encode plain text to Base64 or decode Base64 back with URL-safe support.',
+    icon: 'FaExchangeAlt',
+    trending: false,
+    features: [
+      'Safe UTF-8 unicode encoding support',
+      'Decode standard and URL-Safe Base64 strings',
+      'Fast input and output swap options',
+      'Real-time conversion as you type',
+      'Character count and sizing indicators'
+    ]
+  },
+  {
+    id: 'api-key-generator',
+    category: 'developer',
+    name: 'API Key Generator',
+    description: 'Generate high-entropy API keys, UUID tokens, or random secrets for application credentials.',
+    icon: 'FaServer',
+    trending: true,
+    features: [
+      'Cryptographically secure generation (window.crypto)',
+      'Multiple encoding formats (Base64Url, Hex, Alphanumeric)',
+      'Compliance with UUID v4 formatting standard',
+      'Custom key prefixes and batch quantity control',
+      'Individual key copy and copy all actions'
     ]
   }
 ];

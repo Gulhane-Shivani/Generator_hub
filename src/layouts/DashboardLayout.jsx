@@ -5,7 +5,7 @@ import {
   FaSearch, FaSun, FaMoon, FaBars, FaTimes, 
   FaHome, FaShieldAlt, FaLightbulb, FaSlidersH, 
   FaShareAlt, FaGithub, FaTwitter, FaLinkedin,
-  FaChevronRight, FaCompass, FaHeart, FaChevronDown
+  FaChevronRight, FaCompass, FaHeart, FaChevronDown, FaCode
 } from 'react-icons/fa';
 import { useApp } from '../context/AppContext';
 import { categories, tools } from '../data/toolsData';
@@ -19,7 +19,8 @@ const DashboardLayout = ({ children }) => {
     security: true,
     creative: true,
     utility: true,
-    social: true
+    social: true,
+    developer: true
   });
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
   const searchRef = useRef(null);
@@ -67,7 +68,8 @@ const DashboardLayout = ({ children }) => {
     security: <FaShieldAlt />,
     creative: <FaLightbulb />,
     utility: <FaSlidersH />,
-    social: <FaShareAlt />
+    social: <FaShareAlt />,
+    developer: <FaCode />
   };
 
   const sidebarContent = (
@@ -415,6 +417,7 @@ const DashboardLayout = ({ children }) => {
               <Link to="/creative" className="hover:text-violet-500 transition-colors">Creative</Link>
               <Link to="/utility" className="hover:text-violet-500 transition-colors">Utility</Link>
               <Link to="/social" className="hover:text-violet-500 transition-colors">Social</Link>
+              <Link to="/developer" className="hover:text-violet-500 transition-colors">Developer</Link>
             </div>
 
             {/* Social icons */}

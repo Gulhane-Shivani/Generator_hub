@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  FaShieldAlt, FaLightbulb, FaSlidersH, FaShareAlt, 
+  FaShieldAlt, FaLightbulb, FaSlidersH, FaShareAlt, FaCode,
   FaSearch, FaFire, FaBolt, FaLock, FaMobile, FaHandSparkles, FaArrowRight 
 } from 'react-icons/fa';
 import { categories, tools } from '../data/toolsData';
@@ -23,7 +23,8 @@ const LandingPage = () => {
     security: <FaShieldAlt className="text-2xl" />,
     creative: <FaLightbulb className="text-2xl" />,
     utility: <FaSlidersH className="text-2xl" />,
-    social: <FaShareAlt className="text-2xl" />
+    social: <FaShareAlt className="text-2xl" />,
+    developer: <FaCode className="text-2xl" />
   };
 
   const containerVariants = {

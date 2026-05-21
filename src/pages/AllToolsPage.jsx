@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaSearch, FaArrowRight, FaSlidersH, FaShieldAlt, FaLightbulb, FaShareAlt, FaCompass } from 'react-icons/fa';
+import { FaSearch, FaArrowRight, FaSlidersH, FaShieldAlt, FaLightbulb, FaShareAlt, FaCompass, FaCode } from 'react-icons/fa';
 import { categories, tools } from '../data/toolsData';
 import ToolIcon from '../components/ToolIcon';
 
@@ -13,7 +13,8 @@ const AllToolsPage = () => {
     security: <FaShieldAlt />,
     creative: <FaLightbulb />,
     utility: <FaSlidersH />,
-    social: <FaShareAlt />
+    social: <FaShareAlt />,
+    developer: <FaCode />
   };
 
   const filteredTools = tools.filter(tool => {

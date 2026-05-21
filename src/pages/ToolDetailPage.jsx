@@ -18,6 +18,9 @@ import HashtagGenerator from '../tools/HashtagGenerator';
 import SocialMediaNameGenerator from '../tools/SocialMediaNameGenerator';
 import PasswordStrengthChecker from '../tools/PasswordStrengthChecker';
 import TextEncryptDecrypt from '../tools/TextEncryptDecrypt';
+import JsonFormatter from '../tools/JsonFormatter';
+import Base64EncoderDecoder from '../tools/Base64EncoderDecoder';
+import ApiKeyGenerator from '../tools/ApiKeyGenerator';
 
 const ToolDetailPage = () => {
   const { toolId } = useParams();
@@ -45,7 +48,10 @@ const ToolDetailPage = () => {
     'random-number-generator': <RandomNumberGenerator />,
     'username-generator': <UsernameGenerator />,
     'hashtag-generator': <HashtagGenerator />,
-    'social-media-name-generator': <SocialMediaNameGenerator />
+    'social-media-name-generator': <SocialMediaNameGenerator />,
+    'json-formatter': <JsonFormatter />,
+    'base64-encoder-decoder': <Base64EncoderDecoder />,
+    'api-key-generator': <ApiKeyGenerator />
   };
 
   const widget = componentMap[toolId] || <div className="text-slate-400">Tool widget coming soon.</div>;
@@ -150,6 +156,21 @@ const ToolDetailPage = () => {
       { title: 'Niche Specialization', text: 'Styles suggestions around high-growth channels (Tech, Gaming, Vlogs, Food) to establish immediate target authority.' },
       { title: 'Character Constraints', text: 'Ensures name recommendations adhere to strict username character limits enforced by YouTube, Instagram, and Twitch.' },
       { title: 'Compare Matrix', text: 'Renders results in clean, organized tables with copy features to easily bookmark your top selections.' }
+    ],
+    'json-formatter': [
+      { title: 'JSON Validation', text: 'Uses standard browser JSON parses. Any validation error shows descriptive parser reports, pointing exactly to where parsing failed.' },
+      { title: 'Offline Formatting', text: 'All operations execute locally in-memory. None of your API payloads, credentials, or data structures ever leave the device.' },
+      { title: 'Minification Benefits', text: 'Minified output strips out carriage returns, line feeds, and spacing indentations, optimizing string sizes to save network bandwidth.' }
+    ],
+    'base64-encoder-decoder': [
+      { title: 'Safe UTF-8 Encoding', text: 'Uses pre-processing mapping algorithms to encode multi-byte Unicode/UTF-8 strings without encountering common DOMException crashes.' },
+      { title: 'URL-Safe Standards', text: 'Substitutes standard Base64 characters "+" with "-" and "/" with "_", and trims trailing "=" padding for clean HTTP query parameters.' },
+      { title: 'Memory Isolation', text: 'Computations run on sandboxed client processes. Decoded payload streams are kept transient in memory and never logged.' }
+    ],
+    'api-key-generator': [
+      { title: 'Cryptographic Entropy', text: 'Generates secure keys derived from window.crypto.getRandomValues. This supplies high-grade security entropy resilient to brute-force attacks.' },
+      { title: 'Prefix Customization', text: 'Integrates custom application prefixes (e.g. sk_live_, app_) into credentials to aid scanning tools and source control alerts.' },
+      { title: 'UUID v4 Compliance', text: 'Provides RFC4122-compliant UUIDs, formatting 122 bits of random data into a standard 36-character hexadecimal group template.' }
     ]
   };
 
