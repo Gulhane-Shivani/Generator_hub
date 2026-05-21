@@ -433,6 +433,22 @@ const LandingPage = () => {
             {
               question: "Why is the rendering and execution so instant?",
               answer: "Since all generations are processed inside your local browser virtual machine, there are zero server round-trip network lags. You get light-speed generations instantly."
+            },
+            {
+              question: "Do I need to sign up or create an account to use the tools?",
+              answer: "No! All our generators and developer toolkits are fully accessible without registration, email verification, or subscription hurdles. Enjoy a friction-free experience."
+            },
+            {
+              question: "Do the tools support offline mode?",
+              answer: "Yes! Since all files and logic are compiled client-side, once the web application loads, you can safely disconnect from the internet and continue using all generation, validation, and encoding functionalities offline."
+            },
+            {
+              question: "Is there any limit to the number of items I can generate?",
+              answer: "No. You can perform as many generations, copies, format runs, and downloads as your device resources allow. There are absolutely no request throttling or quota limits."
+            },
+            {
+              question: "How can I suggest features or report bugs?",
+              answer: "We love feedback! You can reach out directly via our Contact page or look up our official GitHub repository link in the sidebar/footer to submit issues and suggest new features."
             }
           ].map((faq, idx) => {
             const isOpen = activeFaq === idx;
