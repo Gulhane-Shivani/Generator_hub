@@ -148,8 +148,8 @@ const Base64EncoderDecoder = () => {
             }}
             className={`py-2 px-5 rounded-xl text-xs font-bold transition-all ${
               mode === 'encode'
-                ? 'bg-violet-650 text-white shadow-lg shadow-violet-500/25'
-                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-450 hover:bg-slate-200'
+                ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/25'
+                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200'
             }`}
           >
             Encode Mode
@@ -165,8 +165,8 @@ const Base64EncoderDecoder = () => {
             }}
             className={`py-2 px-5 rounded-xl text-xs font-bold transition-all ${
               mode === 'decode'
-                ? 'bg-violet-650 text-white shadow-lg shadow-violet-500/25'
-                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-450 hover:bg-slate-200'
+                ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/25'
+                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200'
             }`}
           >
             Decode Mode
