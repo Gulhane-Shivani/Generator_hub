@@ -10,10 +10,166 @@ import {
 import { categories, tools } from '../data/toolsData';
 import ToolIcon from '../components/ToolIcon';
 
+const howToUseData = {
+  developer: {
+    title: "Developers & Software Engineers",
+    icon: <FaLaptopCode className="text-2xl" />,
+    color: "from-blue-600 to-indigo-600",
+    bgGradient: "from-blue-500/5 to-indigo-500/5 dark:from-blue-500/10 dark:to-indigo-500/10",
+    borderColor: "border-indigo-500/20 hover:border-indigo-500/40",
+    textTheme: "text-indigo-600 dark:text-indigo-400",
+    steps: [
+      {
+        num: "01",
+        name: "Format & Validate API Payloads",
+        desc: "Got a messy, single-line JSON output? Open the JSON Formatter to instantly prettify it with adjustable indentation (2, 4, or 8 spaces), validate syntax, check statistics, or compress it to minified output.",
+        link: "/tool/json-formatter",
+        linkText: "Launch JSON Formatter"
+      },
+      {
+        num: "02",
+        name: "Generate Cryptographic API Keys",
+        desc: "Need robust keys for environment configuration? Run the API Key Generator to spin up custom UUID v4 strings, high-entropy alphanumeric credentials, or batch hex keys completely secure in your client sandbox.",
+        link: "/tool/api-key-generator",
+        linkText: "Launch API Key Generator"
+      },
+      {
+        num: "03",
+        name: "Transform Binary & Text to Base64",
+        desc: "Quickly convert image paths, credentials, or structured text into URL-safe Base64 strings. Perfect for embedding images in inline HTML or testing programmatic REST data packets safely.",
+        link: "/tool/base64-encoder-decoder",
+        linkText: "Launch Base64 Encoder"
+      },
+      {
+        num: "04",
+        name: "Encrypt Configuration Data Locally",
+        desc: "Secure sensitive strings before staging them. Run the Text Encrypt & Decrypt tool to compile PBKDF2-derived, AES-GCM 256-bit encrypted strings directly on your computer, keeping keys out of cloud systems.",
+        link: "/tool/text-encrypt-decrypt",
+        linkText: "Launch Encryption Tool"
+      }
+    ]
+  },
+  creator: {
+    title: "Content Creators & Influencers",
+    icon: <FaUserEdit className="text-2xl" />,
+    color: "from-pink-600 to-rose-600",
+    bgGradient: "from-pink-500/5 to-rose-500/5 dark:from-pink-500/10 dark:to-rose-500/10",
+    borderColor: "border-rose-500/20 hover:border-rose-500/40",
+    textTheme: "text-rose-600 dark:text-rose-400",
+    steps: [
+      {
+        num: "01",
+        name: "Optimize Algorithm Discovery",
+        desc: "Struggling with organic impressions? Enter key focus phrases into the Hashtag Generator to instantly harvest popular, trending, and highly targeted tags optimized for Instagram, TikTok, and YouTube.",
+        link: "/tool/hashtag-generator",
+        linkText: "Launch Hashtag Generator"
+      },
+      {
+        num: "02",
+        name: "Build Your Digital Niche Branding",
+        desc: "Set up your brand identity easily. Combine keywords in the Name Generator or the custom Channel Name Generator to establish stylized channel IDs tailored to vloggers, tech review stars, or home cooks.",
+        link: "/tool/social-media-name-generator",
+        linkText: "Launch Channel Name Gen"
+      },
+      {
+        num: "03",
+        name: "Write Engaging & Custom Bios",
+        desc: "Ditch generic intros. Select your target tone (professional, creative, funny) and enter key milestones in the Bio Generator to instantly build character-counted bios designed to convert profile clicks.",
+        link: "/tool/bio-generator",
+        linkText: "Launch Bio Generator"
+      },
+      {
+        num: "04",
+        name: "Bridge Offline Audiences Online",
+        desc: "Convert your link-in-bios, merchandise, or channels into high-quality scannable graphics. Use the QR Code Generator to download SVG/PNG vectors complete with custom colors to fit your brand kit.",
+        link: "/tool/qr-code-generator",
+        linkText: "Launch QR Code Generator"
+      }
+    ]
+  },
+  gamer: {
+    title: "Gamers & Tech Enthusiasts",
+    icon: <FaGamepad className="text-2xl" />,
+    color: "from-emerald-600 to-teal-600",
+    bgGradient: "from-emerald-500/5 to-teal-500/5 dark:from-emerald-500/10 dark:to-emerald-500/10",
+    borderColor: "border-teal-500/20 hover:border-teal-500/40",
+    textTheme: "text-teal-600 dark:text-teal-400",
+    steps: [
+      {
+        num: "01",
+        name: "Create Legendary Nicknames & Gamertags",
+        desc: "Need a new gaming persona for Steam, Xbox, or Discord? Open the Name Generator and switch to Character & Gaming mode to generate hundreds of legendary prefix/suffix name ideas instantly.",
+        link: "/tool/name-generator",
+        linkText: "Launch Name Generator"
+      },
+      {
+        num: "02",
+        name: "Inject Unique Handle Styling Variations",
+        desc: "Differentiate yourself from basic tags. Combine keywords in the Username Generator with aesthetic leet-speak modifiers, specialized character replacements, and numerical decorators.",
+        link: "/tool/username-generator",
+        linkText: "Launch Username Generator"
+      },
+      {
+        num: "03",
+        name: "Audit Password Strength & Crack Times",
+        desc: "Are your gaming credentials secure? Paste your password into the client-side Password Strength Checker to view entropy bits, checklists, and precise estimations of modern computer brute-forcing times.",
+        link: "/tool/password-strength-checker",
+        linkText: "Launch Strength Checker"
+      },
+      {
+        num: "04",
+        name: "Generate Hack-Proof High-Entropy Logins",
+        desc: "Protect rare skins and achievements from database hacks. Spin up random passwords via the Password Generator with upper, lower, digit, and symbol toggles up to 64 cryptographically secure characters.",
+        link: "/tool/password-generator",
+        linkText: "Launch Password Generator"
+      }
+    ]
+  },
+  professional: {
+    title: "Business Professionals & Teams",
+    icon: <FaBriefcase className="text-2xl" />,
+    color: "from-amber-600 to-orange-600",
+    bgGradient: "from-amber-500/5 to-orange-500/5 dark:from-amber-500/10 dark:to-orange-500/10",
+    borderColor: "border-orange-500/20 hover:border-orange-500/40",
+    textTheme: "text-orange-600 dark:text-orange-400",
+    steps: [
+      {
+        num: "01",
+        name: "Encode Inventory Barcodes",
+        desc: "Streamline retail tracking. Paste custom alphanumeric serial inputs into the Barcode Generator to instantly compile high-resolution, retail-ready CODE128 vector bars that download in a single click.",
+        link: "/tool/barcode-generator",
+        linkText: "Launch Barcode Generator"
+      },
+      {
+        num: "02",
+        name: "Connect Clients to Digital Assets",
+        desc: "Make meetings friction-free. Convert WiFi credentials, website links, or email addresses into branded QR codes using the QR Code Generator, saving custom PNG assets directly to your device.",
+        link: "/tool/qr-code-generator",
+        linkText: "Launch QR Code Generator"
+      },
+      {
+        num: "03",
+        name: "Design Cohesive Marketing Palettes",
+        desc: "Accelerate UI mockup styling. Choose triadic or complementary modes in the Color Palette Generator to assemble sleek color schemas, then export variables in CSS, SCSS, or Tailwind configurations.",
+        link: "/tool/color-palette-generator",
+        linkText: "Launch Palette Generator"
+      },
+      {
+        num: "04",
+        name: "Generate Randomized Numbers & Datasets",
+        desc: "Need dummy records for testing sheets? Run the Random Number Generator to select non-repeating lists of random range integers. Ideal for presentations, lottery scripts, or split A/B tests.",
+        link: "/tool/random-number-generator",
+        linkText: "Launch Number Picker"
+      }
+    ]
+  }
+};
+
 const LandingPage = () => {
   const navigate = useNavigate();
   const [localSearch, setLocalSearch] = useState('');
   const [activeFaq, setActiveFaq] = useState(null);
+  const [activeUseTab, setActiveUseTab] = useState('developer');
 
   const trendingTools = tools.filter(tool => tool.trending);
 
@@ -345,6 +501,119 @@ const LandingPage = () => {
               </div>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* 6.5 HOW TO USE GENERATOR SECTION */}
+      <section className="space-y-10 select-none">
+        <div className="text-center space-y-2">
+          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight font-display bg-gradient-to-r from-pink-500 via-violet-600 to-indigo-600 bg-clip-text text-transparent animate-pulse">
+            How Can I Use the Generators?
+          </h2>
+          <p className="text-sm md:text-base text-slate-400 font-medium max-w-xl mx-auto">
+            A step-by-step point guide on how developers, creators, gamers, and professionals can leverage our high-entropy client-side utilities.
+          </p>
+        </div>
+
+        {/* Tab Buttons Container */}
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-4xl mx-auto">
+          {Object.entries(howToUseData).map(([key, data]) => {
+            const isActive = activeUseTab === key;
+            return (
+              <button
+                key={key}
+                onClick={() => setActiveUseTab(key)}
+                className={`flex items-center gap-2.5 px-5 py-3 rounded-2xl border text-xs md:text-sm font-bold transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md ${
+                  isActive 
+                    ? `bg-gradient-to-r ${data.color} text-white border-transparent scale-105 shadow-lg` 
+                    : 'bg-white/80 dark:bg-slate-900/80 border-slate-200/60 dark:border-slate-800/60 text-slate-600 dark:text-slate-405 hover:bg-slate-50 dark:hover:bg-slate-850 hover:border-slate-350 dark:hover:border-slate-650'
+                }`}
+              >
+                {data.icon}
+                <span className="capitalize">{key === 'developer' ? 'Developer' : key === 'creator' ? 'Creator' : key === 'gamer' ? 'Gamer' : 'Professional'}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Tab content panel */}
+        <div className="max-w-5xl mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeUseTab}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3 }}
+              className={`glass-effect rounded-3xl p-6 md:p-8 border bg-gradient-to-tr ${howToUseData[activeUseTab].bgGradient} ${howToUseData[activeUseTab].borderColor} shadow-lg`}
+            >
+              <div className="flex flex-col lg:flex-row gap-8 items-start">
+                {/* Left Side: Summary Card */}
+                <div className="w-full lg:w-1/3 space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className={`p-3 rounded-2xl bg-white dark:bg-slate-950 border border-slate-200/30 dark:border-slate-800/30 shadow-md ${howToUseData[activeUseTab].textTheme}`}>
+                      {howToUseData[activeUseTab].icon}
+                    </div>
+                    <h3 className="text-lg md:text-xl font-extrabold text-slate-800 dark:text-white font-display text-left">
+                      {howToUseData[activeUseTab].title}
+                    </h3>
+                  </div>
+                  <p className="text-xs md:text-sm text-slate-400 dark:text-slate-400 font-semibold leading-relaxed text-left">
+                    Check out the step-by-step point workflows showing exactly how a {activeUseTab === 'developer' ? 'developer' : activeUseTab === 'creator' ? 'creator' : activeUseTab === 'gamer' ? 'gamer' : 'professional'} can leverage specific generator tools on this platform to automate, protect, and optimize work.
+                  </p>
+                  
+                  <div className="hidden lg:block pt-4">
+                    <div className="w-full h-px bg-slate-200/30 dark:bg-slate-800/30 mb-4"></div>
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 text-left block">Recommended Tools Quick Launch</span>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {howToUseData[activeUseTab].steps.map((step, idx) => (
+                        <Link
+                          key={idx}
+                          to={step.link}
+                          className={`text-[10px] font-bold px-2.5 py-1.5 rounded-xl bg-white/70 dark:bg-slate-950/70 border border-slate-200/40 dark:border-slate-800/40 hover:border-violet-500/45 transition-colors ${howToUseData[activeUseTab].textTheme}`}
+                        >
+                          {step.linkText.replace("Launch ", "")}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Side: Step-by-Step point list */}
+                <div className="w-full lg:w-2/3 space-y-6">
+                  {howToUseData[activeUseTab].steps.map((step, index) => (
+                    <div
+                      key={index}
+                      className="group flex gap-4 md:gap-5 p-4 md:p-5 rounded-2xl bg-white/40 dark:bg-slate-950/40 border border-slate-200/20 dark:border-slate-800/20 hover:bg-white/75 dark:hover:bg-slate-950/75 hover:border-slate-350 dark:hover:border-slate-650 transition-all shadow-sm hover:shadow-md"
+                    >
+                      {/* Big numbered bullet point */}
+                      <div className={`flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gradient-to-tr ${howToUseData[activeUseTab].color} text-white flex items-center justify-center font-display font-extrabold text-sm md:text-base shadow-md group-hover:scale-110 transition-transform`}>
+                        {step.num}
+                      </div>
+
+                      {/* Content & Action point */}
+                      <div className="space-y-2 flex-grow text-left">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
+                          <h4 className="text-sm md:text-base font-extrabold text-slate-800 dark:text-slate-100 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                            {step.name}
+                          </h4>
+                          <Link
+                            to={step.link}
+                            className={`inline-flex items-center gap-1 text-[11px] font-bold ${howToUseData[activeUseTab].textTheme} hover:underline shrink-0`}
+                          >
+                            {step.linkText} <FaArrowRight className="text-[9px] group-hover:translate-x-1 transition-transform" />
+                          </Link>
+                        </div>
+                        <p className="text-xs md:text-sm text-slate-400 dark:text-slate-400 leading-relaxed font-semibold">
+                          {step.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
 
