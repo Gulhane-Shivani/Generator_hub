@@ -13,7 +13,7 @@ import ToolIcon from '../components/ToolIcon';
 const howToUseData = {
   developer: {
     title: "Developers & Software Engineers",
-    icon: <FaLaptopCode className="text-2xl" />,
+    icon: <FaLaptopCode className="text-xl" />,
     color: "from-blue-600 to-indigo-600",
     bgGradient: "from-blue-500/5 to-indigo-500/5 dark:from-blue-500/10 dark:to-indigo-500/10",
     borderColor: "border-indigo-500/20 hover:border-indigo-500/40",
@@ -22,36 +22,36 @@ const howToUseData = {
       {
         num: "01",
         name: "Format & Validate API Payloads",
-        desc: "Got a messy, single-line JSON output? Open the JSON Formatter to instantly prettify it with adjustable indentation (2, 4, or 8 spaces), validate syntax, check statistics, or compress it to minified output.",
+        desc: "Instantly prettify messy, single-line JSON strings with customizable spacing. Validate syntax correctness and compress outputs for lighter payload sizes.",
         link: "/tool/json-formatter",
-        linkText: "Launch JSON Formatter"
+        linkText: "Format JSON"
       },
       {
         num: "02",
         name: "Generate Cryptographic API Keys",
-        desc: "Need robust keys for environment configuration? Run the API Key Generator to spin up custom UUID v4 strings, high-entropy alphanumeric credentials, or batch hex keys completely secure in your client sandbox.",
+        desc: "Spin up robust UUID v4 strings, high-entropy alphanumeric credentials, or customizable hex key arrays secure in your client-side sandbox.",
         link: "/tool/api-key-generator",
-        linkText: "Launch API Key Generator"
+        linkText: "Generate Keys"
       },
       {
         num: "03",
         name: "Transform Binary & Text to Base64",
-        desc: "Quickly convert image paths, credentials, or structured text into URL-safe Base64 strings. Perfect for embedding images in inline HTML or testing programmatic REST data packets safely.",
+        desc: "Quickly convert image assets or secure payloads to URL-safe Base64 strings, or easily decode them back with UTF-8 support.",
         link: "/tool/base64-encoder-decoder",
-        linkText: "Launch Base64 Encoder"
+        linkText: "Encode Base64"
       },
       {
         num: "04",
-        name: "Encrypt Configuration Data Locally",
-        desc: "Secure sensitive strings before staging them. Run the Text Encrypt & Decrypt tool to compile PBKDF2-derived, AES-GCM 256-bit encrypted strings directly on your computer, keeping keys out of cloud systems.",
+        name: "Encrypt Config Data Locally",
+        desc: "Safeguard text strings using PBKDF2-derived AES-GCM 256-bit encryption entirely inside your browser virtual machine without network risk.",
         link: "/tool/text-encrypt-decrypt",
-        linkText: "Launch Encryption Tool"
+        linkText: "Encrypt Text"
       }
     ]
   },
   creator: {
     title: "Content Creators & Influencers",
-    icon: <FaUserEdit className="text-2xl" />,
+    icon: <FaUserEdit className="text-xl" />,
     color: "from-pink-600 to-rose-600",
     bgGradient: "from-pink-500/5 to-rose-500/5 dark:from-pink-500/10 dark:to-rose-500/10",
     borderColor: "border-rose-500/20 hover:border-rose-500/40",
@@ -60,36 +60,36 @@ const howToUseData = {
       {
         num: "01",
         name: "Optimize Algorithm Discovery",
-        desc: "Struggling with organic impressions? Enter key focus phrases into the Hashtag Generator to instantly harvest popular, trending, and highly targeted tags optimized for Instagram, TikTok, and YouTube.",
+        desc: "Enter core niches to instantly collect trending, popular, and relevant tags optimized for YouTube, Instagram, and TikTok SEO.",
         link: "/tool/hashtag-generator",
-        linkText: "Launch Hashtag Generator"
+        linkText: "Find Tags"
       },
       {
         num: "02",
         name: "Build Your Digital Niche Branding",
-        desc: "Set up your brand identity easily. Combine keywords in the Name Generator or the custom Channel Name Generator to establish stylized channel IDs tailored to vloggers, tech review stars, or home cooks.",
+        desc: "Generate creative handle names and blended domain ideas tailored to tech review stars, vloggers, or fitness channels.",
         link: "/tool/social-media-name-generator",
-        linkText: "Launch Channel Name Gen"
+        linkText: "Create Handles"
       },
       {
         num: "03",
         name: "Write Engaging & Custom Bios",
-        desc: "Ditch generic intros. Select your target tone (professional, creative, funny) and enter key milestones in the Bio Generator to instantly build character-counted bios designed to convert profile clicks.",
+        desc: "Select a custom tone and feed key keywords to create custom character-counted bios designed to drive profile conversions.",
         link: "/tool/bio-generator",
-        linkText: "Launch Bio Generator"
+        linkText: "Generate Bio"
       },
       {
         num: "04",
         name: "Bridge Offline Audiences Online",
-        desc: "Convert your link-in-bios, merchandise, or channels into high-quality scannable graphics. Use the QR Code Generator to download SVG/PNG vectors complete with custom colors to fit your brand kit.",
+        desc: "Render custom colored QR codes with link paths and instantly download print-ready PNG/SVG graphics for your physical branding.",
         link: "/tool/qr-code-generator",
-        linkText: "Launch QR Code Generator"
+        linkText: "Generate QR"
       }
     ]
   },
   gamer: {
     title: "Gamers & Tech Enthusiasts",
-    icon: <FaGamepad className="text-2xl" />,
+    icon: <FaGamepad className="text-xl" />,
     color: "from-emerald-600 to-teal-600",
     bgGradient: "from-emerald-500/5 to-teal-500/5 dark:from-emerald-500/10 dark:to-emerald-500/10",
     borderColor: "border-teal-500/20 hover:border-teal-500/40",
@@ -97,37 +97,37 @@ const howToUseData = {
     steps: [
       {
         num: "01",
-        name: "Create Legendary Nicknames & Gamertags",
-        desc: "Need a new gaming persona for Steam, Xbox, or Discord? Open the Name Generator and switch to Character & Gaming mode to generate hundreds of legendary prefix/suffix name ideas instantly.",
+        name: "Create Legendary Nicknames",
+        desc: "Roll fresh character handles, clan names, and aliases using customized prefix/suffix rules for Discord and Steam.",
         link: "/tool/name-generator",
-        linkText: "Launch Name Generator"
+        linkText: "Find Names"
       },
       {
         num: "02",
-        name: "Inject Unique Handle Styling Variations",
-        desc: "Differentiate yourself from basic tags. Combine keywords in the Username Generator with aesthetic leet-speak modifiers, specialized character replacements, and numerical decorators.",
+        name: "Inject Unique Handle Styling",
+        desc: "Blend custom keywords with leet-speak modifiers, specialized character mappings, and numeric decorators to stand out.",
         link: "/tool/username-generator",
-        linkText: "Launch Username Generator"
+        linkText: "Style Usernames"
       },
       {
         num: "03",
-        name: "Audit Password Strength & Crack Times",
-        desc: "Are your gaming credentials secure? Paste your password into the client-side Password Strength Checker to view entropy bits, checklists, and precise estimations of modern computer brute-forcing times.",
+        name: "Audit Password Strength",
+        desc: "Check credentials against brute-force entropy tests, checklist rules, and secure time-to-crack evaluations.",
         link: "/tool/password-strength-checker",
-        linkText: "Launch Strength Checker"
+        linkText: "Audit Security"
       },
       {
         num: "04",
-        name: "Generate Hack-Proof High-Entropy Logins",
-        desc: "Protect rare skins and achievements from database hacks. Spin up random passwords via the Password Generator with upper, lower, digit, and symbol toggles up to 64 cryptographically secure characters.",
+        name: "Generate Hack-Proof Logins",
+        desc: "Secure gaming profiles and digital wallets with high-entropy client-side passwords up to 64 characters long.",
         link: "/tool/password-generator",
-        linkText: "Launch Password Generator"
+        linkText: "Make Password"
       }
     ]
   },
   professional: {
     title: "Business Professionals & Teams",
-    icon: <FaBriefcase className="text-2xl" />,
+    icon: <FaBriefcase className="text-xl" />,
     color: "from-amber-600 to-orange-600",
     bgGradient: "from-amber-500/5 to-orange-500/5 dark:from-amber-500/10 dark:to-orange-500/10",
     borderColor: "border-orange-500/20 hover:border-orange-500/40",
@@ -136,30 +136,30 @@ const howToUseData = {
       {
         num: "01",
         name: "Encode Inventory Barcodes",
-        desc: "Streamline retail tracking. Paste custom alphanumeric serial inputs into the Barcode Generator to instantly compile high-resolution, retail-ready CODE128 vector bars that download in a single click.",
+        desc: "Translate serial inputs into high-res CODE128 vector bars, perfect for quick point-of-sale scanning and stock tracking.",
         link: "/tool/barcode-generator",
-        linkText: "Launch Barcode Generator"
+        linkText: "Make Barcodes"
       },
       {
         num: "02",
         name: "Connect Clients to Digital Assets",
-        desc: "Make meetings friction-free. Convert WiFi credentials, website links, or email addresses into branded QR codes using the QR Code Generator, saving custom PNG assets directly to your device.",
+        desc: "Generate dynamic QR codes for WiFi access points, product feedback links, or contact info cards in seconds.",
         link: "/tool/qr-code-generator",
-        linkText: "Launch QR Code Generator"
+        linkText: "Create QR"
       },
       {
         num: "03",
         name: "Design Cohesive Marketing Palettes",
-        desc: "Accelerate UI mockup styling. Choose triadic or complementary modes in the Color Palette Generator to assemble sleek color schemas, then export variables in CSS, SCSS, or Tailwind configurations.",
+        desc: "Generate analogous, monochromatic, or complementary UI themes and export variables for CSS and Tailwind setups.",
         link: "/tool/color-palette-generator",
-        linkText: "Launch Palette Generator"
+        linkText: "Find Palettes"
       },
       {
         num: "04",
-        name: "Generate Randomized Numbers & Datasets",
-        desc: "Need dummy records for testing sheets? Run the Random Number Generator to select non-repeating lists of random range integers. Ideal for presentations, lottery scripts, or split A/B tests.",
+        name: "Generate Randomized Numbers",
+        desc: "Produce non-repeating lists of random range numbers for statistically sound mock data sheets, lottery runs, or A/B tests.",
         link: "/tool/random-number-generator",
-        linkText: "Launch Number Picker"
+        linkText: "Get Numbers"
       }
     ]
   }
@@ -580,31 +580,31 @@ const LandingPage = () => {
                 </div>
 
                 {/* Right Side: Step-by-Step point list */}
-                <div className="w-full lg:w-2/3 space-y-6">
+                <div className="w-full lg:w-2/3 space-y-3.5">
                   {howToUseData[activeUseTab].steps.map((step, index) => (
                     <div
                       key={index}
-                      className="group flex gap-4 md:gap-5 p-4 md:p-5 rounded-2xl bg-white/40 dark:bg-slate-950/40 border border-slate-200/20 dark:border-slate-800/20 hover:bg-white/75 dark:hover:bg-slate-950/75 hover:border-slate-350 dark:hover:border-slate-650 transition-all shadow-sm hover:shadow-md"
+                      className="group flex gap-3.5 md:gap-4 p-3 md:p-3.5 rounded-2xl bg-white/40 dark:bg-slate-950/40 border border-slate-200/20 dark:border-slate-800/20 hover:bg-white/75 dark:hover:bg-slate-950/75 hover:border-slate-350 dark:hover:border-slate-650 transition-all shadow-sm hover:shadow-md"
                     >
                       {/* Big numbered bullet point */}
-                      <div className={`flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gradient-to-tr ${howToUseData[activeUseTab].color} text-white flex items-center justify-center font-display font-extrabold text-sm md:text-base shadow-md group-hover:scale-110 transition-transform`}>
+                      <div className={`flex-shrink-0 w-8 h-8 md:w-9 md:h-9 rounded-xl bg-gradient-to-tr ${howToUseData[activeUseTab].color} text-white flex items-center justify-center font-display font-extrabold text-xs md:text-sm shadow-md group-hover:scale-105 transition-transform`}>
                         {step.num}
                       </div>
 
                       {/* Content & Action point */}
-                      <div className="space-y-2 flex-grow text-left">
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
-                          <h4 className="text-sm md:text-base font-extrabold text-slate-800 dark:text-slate-100 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                      <div className="space-y-1 flex-grow text-left">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                          <h4 className="text-xs md:text-sm font-extrabold text-slate-800 dark:text-slate-100 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
                             {step.name}
                           </h4>
                           <Link
                             to={step.link}
-                            className={`inline-flex items-center gap-1 text-[11px] font-bold ${howToUseData[activeUseTab].textTheme} hover:underline shrink-0`}
+                            className={`inline-flex items-center gap-1 text-[10px] font-bold ${howToUseData[activeUseTab].textTheme} hover:underline shrink-0`}
                           >
-                            {step.linkText} <FaArrowRight className="text-[9px] group-hover:translate-x-1 transition-transform" />
+                            {step.linkText} <FaArrowRight className="text-[8px] group-hover:translate-x-1 transition-transform" />
                           </Link>
                         </div>
-                        <p className="text-xs md:text-sm text-slate-400 dark:text-slate-400 leading-relaxed font-semibold">
+                        <p className="text-[11px] md:text-xs text-slate-400 dark:text-slate-400 leading-relaxed font-semibold">
                           {step.desc}
                         </p>
                       </div>
