@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { FaChevronRight, FaArrowLeft, FaShieldAlt, FaStar, FaBolt, FaListUl, FaQuestionCircle, FaChevronDown, FaChevronUp, FaInfoCircle } from 'react-icons/fa';
 import { categories, tools } from '../data/toolsData';
 
@@ -189,9 +190,19 @@ const ToolDetailPage = () => {
   };
 
   return (
-    <div className="space-y-6 py-4">
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: 'easeOut' }}
+      className="space-y-6 py-4"
+    >
       {/* Breadcrumb path */}
-      <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 dark:text-slate-500">
+      <motion.div
+        initial={{ opacity: 0, x: -10 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.35 }}
+        className="flex items-center gap-2 text-xs font-semibold text-slate-400 dark:text-slate-500"
+      >
         <Link to="/" className="hover:text-violet-500 transition-colors">Home</Link>
         <FaChevronRight className="text-[10px]" />
         {currentCategory && (
@@ -203,10 +214,15 @@ const ToolDetailPage = () => {
           </>
         )}
         <span className="text-slate-800 dark:text-slate-200">{currentTool.name}</span>
-      </div>
+      </motion.div>
 
       {/* Action Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1, duration: 0.4 }}
+        className="flex flex-col md:flex-row md:items-center justify-between gap-4"
+      >
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <h2 className="text-xl md:text-2xl font-extrabold tracking-tight font-display text-slate-900 dark:text-white">
@@ -229,17 +245,27 @@ const ToolDetailPage = () => {
         >
           <FaArrowLeft className="text-[10px]" /> Back to {currentCategory ? currentCategory.name : 'Home'}
         </Link>
-      </div>
+      </motion.div>
 
       {/* Main Layout Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.18, duration: 0.45 }}
+        className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start"
+      >
         {/* Interactive Tool Widget (Takes 2 columns) */}
         <div className="lg:col-span-2 space-y-6">
           {widget}
         </div>
 
         {/* Feature Sidebar (Takes 1 column) */}
-        <div className="glass-effect p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 space-y-4">
+        <motion.div
+          initial={{ opacity: 0, x: 16 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3, duration: 0.4 }}
+          className="glass-effect p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 space-y-4"
+        >
           <h3 className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-widest flex items-center gap-2 border-b border-slate-200/30 dark:border-slate-800/30 pb-3">
             <FaListUl className="text-violet-500 text-xs" />
             Key Features
@@ -258,32 +284,51 @@ const ToolDetailPage = () => {
             <FaBolt className="text-violet-500 text-xs animate-pulse" />
             Runs client-side in sandboxed frame.
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Specific Information Section */}
       {specificInfoMap[toolId] && (
-        <div className="glass-effect p-6 md:p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 space-y-6 mt-8">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="glass-effect p-6 md:p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 space-y-6 mt-8"
+        >
           <h3 className="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100 font-display flex items-center gap-2 border-b border-slate-200/30 dark:border-slate-800/30 pb-4">
             <FaInfoCircle className="text-violet-500 text-sm md:text-base" /> Specific Information & Insights
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {specificInfoMap[toolId].map((info, idx) => (
-              <div key={idx} className="space-y-2 p-5 rounded-xl bg-slate-50/50 dark:bg-slate-900/50 border border-slate-200/30 dark:border-slate-800/30 transition-all duration-200 hover:border-violet-500/30 dark:hover:border-violet-500/30">
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.08, duration: 0.35 }}
+                className="space-y-2 p-5 rounded-xl bg-slate-50/50 dark:bg-slate-900/50 border border-slate-200/30 dark:border-slate-800/30 transition-all duration-200 hover:border-violet-500/30 dark:hover:border-violet-500/30"
+              >
                 <h4 className="text-xs md:text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
                   {info.title}
                 </h4>
                 <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
                   {info.text}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       )}
 
       {/* FAQ Section */}
-      <div className="glass-effect p-6 md:p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 space-y-6 mt-8">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.45 }}
+        className="glass-effect p-6 md:p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 space-y-6 mt-8"
+      >
         <h3 className="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100 font-display flex items-center gap-2 border-b border-slate-200/30 dark:border-slate-800/30 pb-4">
           <FaQuestionCircle className="text-violet-500 text-sm md:text-base" /> Frequently Asked Questions
         </h3>
@@ -323,8 +368,8 @@ const ToolDetailPage = () => {
             );
           })}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

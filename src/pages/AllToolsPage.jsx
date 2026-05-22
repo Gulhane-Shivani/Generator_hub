@@ -5,6 +5,16 @@ import { FaSearch, FaArrowRight, FaSlidersH, FaShieldAlt, FaLightbulb, FaShareAl
 import { categories, tools } from '../data/toolsData';
 import ToolIcon from '../components/ToolIcon';
 
+const pageVariants = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' } }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 16, scale: 0.97 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 110 } }
+};
+
 const AllToolsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,26 +29,41 @@ const AllToolsPage = () => {
 
   const filteredTools = tools.filter(tool => {
     const matchesCategory = selectedCategory === 'all' || tool.category === selectedCategory;
-    const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          tool.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch =
+      tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      tool.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
   return (
-    <div className="space-y-8 py-4 max-w-7xl mx-auto">
+    <motion.div
+      variants={pageVariants}
+      initial="hidden"
+      animate="show"
+      className="space-y-8 py-4 max-w-7xl mx-auto"
+    >
       {/* Page Header */}
-      <div className="text-center md:text-left space-y-2 md:max-w-2xl">
+      <motion.div
+        initial={{ opacity: 0, y: -14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center md:text-left space-y-2 md:max-w-2xl"
+      >
         <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight font-display bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 dark:from-white dark:via-slate-200 dark:to-slate-450 bg-clip-text text-transparent">
           Explore All Generators
         </h1>
         <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
           Access our comprehensive suite of 100% secure, offline-ready local utilities and creative mock generator engines.
         </p>
-      </div>
+      </motion.div>
 
       {/* Filter and Search Bar Row */}
-      <div className="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between border-b border-slate-200/30 dark:border-slate-800/30 pb-6">
-        
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.12, duration: 0.4 }}
+        className="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between border-b border-slate-200/30 dark:border-slate-800/30 pb-6"
+      >
         {/* Category Filter Tabs */}
         <div className="flex flex-wrap gap-2 items-center">
           <button
@@ -83,26 +108,28 @@ const AllToolsPage = () => {
             className="w-full pl-9 pr-4 py-2 rounded-xl text-xs glass-input font-medium text-slate-800 dark:text-slate-200 placeholder-slate-400 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/50"
           />
         </div>
-      </div>
+      </motion.div>
 
       {/* Tools Cards Grid */}
       <AnimatePresence mode="popLayout">
         {filteredTools.length > 0 ? (
-          <motion.div 
+          <motion.div
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
-            {filteredTools.map((tool) => {
+            {filteredTools.map((tool, idx) => {
               const catInfo = categories.find(c => c.id === tool.category);
               return (
                 <motion.div
                   layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
                   key={tool.id}
-                  className="glass-effect rounded-2xl border border-slate-200/50 dark:border-slate-800/50 p-6 flex flex-col justify-between hover:border-violet-500/50 dark:hover:border-violet-500/50 transition-all duration-200 group shadow-sm hover:shadow-md"
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate="show"
+                  exit={{ opacity: 0, scale: 0.93 }}
+                  transition={{ delay: idx * 0.04 }}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  className="glass-effect rounded-2xl border border-slate-200/50 dark:border-slate-800/50 p-6 flex flex-col justify-between hover:border-violet-500/50 dark:hover:border-violet-500/50 transition-colors duration-200 group shadow-sm hover:shadow-md"
                 >
                   <div className="space-y-4">
                     {/* Header */}
@@ -128,9 +155,7 @@ const AllToolsPage = () => {
 
                   {/* CTA */}
                   <div className="pt-6 border-t border-slate-200/20 dark:border-slate-800/20 mt-4 flex items-center justify-between">
-                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wide">
-                      Instant Tool
-                    </span>
+                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wide">Instant Tool</span>
                     <Link
                       to={`/tool/${tool.id}`}
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-violet-600 dark:text-violet-400 group-hover:translate-x-1 transition-transform"
@@ -144,8 +169,10 @@ const AllToolsPage = () => {
           </motion.div>
         ) : (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             className="text-center py-16 glass-effect rounded-2xl border border-slate-200/50 dark:border-slate-800/50 max-w-md mx-auto space-y-3"
           >
             <div className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center mx-auto text-slate-400">
@@ -156,18 +183,15 @@ const AllToolsPage = () => {
               <p className="text-xs text-slate-500 dark:text-slate-450">Try selecting a different category or clearing your filter term.</p>
             </div>
             <button
-              onClick={() => {
-                setSelectedCategory('all');
-                setSearchQuery('');
-              }}
-              className="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-750 text-white text-xs font-semibold shadow transition-all cursor-pointer"
+              onClick={() => { setSelectedCategory('all'); setSearchQuery(''); }}
+              className="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-xs font-semibold shadow transition-all cursor-pointer"
             >
               Reset Filters
             </button>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };
 

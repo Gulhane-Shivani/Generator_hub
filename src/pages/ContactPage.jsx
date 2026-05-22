@@ -1,6 +1,21 @@
 import React, { useState } from 'react';
 import { FaPaperPlane, FaCheckCircle, FaEnvelope, FaClock } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import { useApp } from '../context/AppContext';
+
+const pageVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: 'easeOut', staggerChildren: 0.15 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 90 } }
+};
 
 const ContactPage = () => {
   const { showToast } = useApp();
@@ -17,9 +32,7 @@ const ContactPage = () => {
       showToast('Please fill out all fields.', 'error');
       return;
     }
-    
     setIsSubmitting(true);
-    // Mock API request delay
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
@@ -31,25 +44,35 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="py-10 max-w-5xl mx-auto space-y-10">
+    <motion.div
+      variants={pageVariants}
+      initial="hidden"
+      animate="show"
+      className="py-10 max-w-5xl mx-auto space-y-10 select-none"
+    >
+      {/* Background glow */}
+      <div className="fixed top-20 right-10 w-72 h-72 bg-violet-500/10 rounded-full blur-[100px] pointer-events-none -z-0" />
+
       {/* Title */}
-      <div className="text-center space-y-2">
+      <motion.div variants={itemVariants} className="text-center space-y-2 relative z-10">
+        <div className="inline-flex w-14 h-14 rounded-2xl bg-gradient-to-tr from-violet-600 to-pink-500 items-center justify-center text-white shadow-xl shadow-violet-500/20 mb-2">
+          <FaEnvelope className="text-2xl" />
+        </div>
         <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 dark:from-white dark:via-slate-200 dark:to-slate-400 bg-clip-text text-transparent">
           Get in Touch
         </h1>
         <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed font-medium">
           Have feedback, feature requests, or encountered a bug? Send us a message and we'll reply shortly.
         </p>
-      </div>
+      </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
-        {/* Info Column (2/5 size) */}
-        <div className="md:col-span-2 space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-start relative z-10">
+        {/* Info Column */}
+        <motion.div variants={itemVariants} className="md:col-span-2 space-y-6">
           <div className="glass-effect p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 space-y-6">
             <h3 className="text-base font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider border-b border-slate-200/30 dark:border-slate-800/30 pb-4">
               Support Channels
             </h3>
-            
             <div className="space-y-5">
               <div className="flex gap-4 items-start">
                 <div className="w-10 h-10 rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400 flex items-center justify-center flex-shrink-0 text-base">
@@ -60,7 +83,6 @@ const ContactPage = () => {
                   <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium">support@genhubtoolkit.com</p>
                 </div>
               </div>
-
               <div className="flex gap-4 items-start">
                 <div className="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-600 dark:text-pink-400 flex items-center justify-center flex-shrink-0 text-base">
                   <FaClock />
@@ -72,16 +94,20 @@ const ContactPage = () => {
               </div>
             </div>
           </div>
-
           <div className="glass-effect p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
             <strong className="text-slate-700 dark:text-slate-350">Important Privacy Notice:</strong> When submitting this form, only standard input fields are sent. None of your local browser storage, tools activity, or generated outputs are collected or attached to this message.
           </div>
-        </div>
+        </motion.div>
 
-        {/* Form Column (3/5 size) */}
-        <div className="md:col-span-3">
+        {/* Form Column */}
+        <motion.div variants={itemVariants} className="md:col-span-3">
           {submitted ? (
-            <div className="glass-effect p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 flex flex-col items-center text-center space-y-6 h-full justify-center min-h-[400px]">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4 }}
+              className="glass-effect p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 flex flex-col items-center text-center space-y-6 h-full justify-center min-h-[400px]"
+            >
               <FaCheckCircle className="text-5xl text-emerald-500 animate-bounce" />
               <div className="space-y-2">
                 <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100">Message Received!</h3>
@@ -95,14 +121,12 @@ const ContactPage = () => {
               >
                 Send Another Message
               </button>
-            </div>
+            </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="glass-effect p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="block text-[11px] md:text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    Your Name
-                  </label>
+                  <label className="block text-[11px] md:text-xs font-bold text-slate-400 uppercase tracking-wider">Your Name</label>
                   <input
                     type="text"
                     required
@@ -113,9 +137,7 @@ const ContactPage = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="block text-[11px] md:text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    Email Address
-                  </label>
+                  <label className="block text-[11px] md:text-xs font-bold text-slate-400 uppercase tracking-wider">Email Address</label>
                   <input
                     type="email"
                     required
@@ -126,11 +148,8 @@ const ContactPage = () => {
                   />
                 </div>
               </div>
-
               <div className="space-y-2">
-                <label className="block text-[11px] md:text-xs font-bold text-slate-400 uppercase tracking-wider">
-                  Subject / Topic
-                </label>
+                <label className="block text-[11px] md:text-xs font-bold text-slate-400 uppercase tracking-wider">Subject / Topic</label>
                 <select
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
@@ -142,11 +161,8 @@ const ContactPage = () => {
                   <option value="Other">Other Query</option>
                 </select>
               </div>
-
               <div className="space-y-2">
-                <label className="block text-[11px] md:text-xs font-bold text-slate-400 uppercase tracking-wider">
-                  Your Message
-                </label>
+                <label className="block text-[11px] md:text-xs font-bold text-slate-400 uppercase tracking-wider">Your Message</label>
                 <textarea
                   required
                   rows={5}
@@ -156,25 +172,18 @@ const ContactPage = () => {
                   className="w-full px-4 py-3 rounded-xl text-xs md:text-sm glass-input font-medium resize-none bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/50 text-slate-700 dark:text-slate-300 focus:ring-2 focus:ring-violet-500 outline-none transition-all"
                 />
               </div>
-
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3 rounded-xl bg-violet-600 hover:bg-violet-750 transition-all font-bold shadow-lg shadow-violet-500/25 flex items-center justify-center gap-2 text-xs md:text-sm text-white cursor-pointer disabled:opacity-50"
+                className="w-full py-3 rounded-xl bg-violet-600 hover:bg-violet-700 transition-all font-bold shadow-lg shadow-violet-500/25 flex items-center justify-center gap-2 text-xs md:text-sm text-white cursor-pointer disabled:opacity-50"
               >
-                {isSubmitting ? (
-                  <span>Sending Message...</span>
-                ) : (
-                  <>
-                    <FaPaperPlane /> Send Message
-                  </>
-                )}
+                {isSubmitting ? <span>Sending Message...</span> : <><FaPaperPlane /> Send Message</>}
               </button>
             </form>
           )}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
