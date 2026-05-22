@@ -392,49 +392,105 @@ const DashboardLayout = ({ children }) => {
         </main>
 
         {/* FOOTER */}
-        <footer className="w-full border-t border-slate-200/50 dark:border-slate-800/50 bg-white/20 dark:bg-slate-950/20 backdrop-blur-md py-8 px-4 md:px-8 mt-auto">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex flex-col items-center md:items-start gap-1">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-md bg-gradient-to-tr from-violet-600 to-pink-500 flex items-center justify-center text-white text-[10px]">
+        <footer className="w-full border-t border-slate-200/50 dark:border-slate-800/50 bg-white/20 dark:bg-slate-950/20 backdrop-blur-md py-12 px-4 md:px-8 mt-auto select-none">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+            {/* Column 1: Brand & Description */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-violet-600 to-pink-500 flex items-center justify-center text-white text-sm shadow">
                   <FaCompass />
                 </div>
-                <span className="font-bold text-sm tracking-tight font-display">
+                <span className="font-extrabold text-base tracking-tight font-display bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
                   Generator Hub
                 </span>
               </div>
-              <p className="text-xs text-slate-400 dark:text-slate-500 font-semibold">
-                Premium client-side generation tools for developers and creators.
+              <p className="text-xs text-slate-400 dark:text-slate-400 leading-relaxed font-semibold">
+                An open collection of client-side utility engines built for developers, creators, and professionals. 100% client-side sandbox operations.
               </p>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[10px] font-bold uppercase tracking-wide">
+                <FaShieldAlt className="text-[9px]" /> Sandbox Privacy Verified
+              </div>
             </div>
 
-            {/* Navigation links */}
-            <div className="flex flex-wrap justify-center gap-6 text-xs text-slate-500 dark:text-slate-400 font-bold">
-              <Link to="/" className="hover:text-violet-500 transition-colors">Home</Link>
-              <Link to="/about" className="hover:text-violet-500 transition-colors">About</Link>
-              <Link to="/contact" className="hover:text-violet-500 transition-colors">Contact</Link>
-              <Link to="/security" className="hover:text-violet-500 transition-colors">Security</Link>
-              <Link to="/creative" className="hover:text-violet-500 transition-colors">Creative</Link>
-              <Link to="/utility" className="hover:text-violet-500 transition-colors">Utility</Link>
-              <Link to="/social" className="hover:text-violet-500 transition-colors">Social</Link>
-              <Link to="/developer" className="hover:text-violet-500 transition-colors">Developer</Link>
+            {/* Column 2: Browse Categories */}
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider">
+                Browse Categories
+              </h4>
+              <ul className="space-y-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                {categories.map((cat) => (
+                  <li key={cat.id}>
+                    <Link to={`/${cat.id}`} className="hover:text-violet-500 dark:hover:text-violet-400 transition-colors block py-0.5">
+                      {cat.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Social icons */}
-            <div className="flex gap-4">
-              <a href="#" className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-violet-500 hover:text-white transition-all">
-                <FaTwitter className="text-xs" />
-              </a>
-              <a href="#" className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-violet-500 hover:text-white transition-all">
-                <FaGithub className="text-xs" />
-              </a>
-              <a href="#" className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-violet-500 hover:text-white transition-all">
-                <FaLinkedin className="text-xs" />
-              </a>
+            {/* Column 3: Popular Generators */}
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider">
+                Popular Tools
+              </h4>
+              <ul className="space-y-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                {[
+                  { id: 'password-generator', name: 'Password Generator' },
+                  { id: 'qr-code-generator', name: 'QR Code Generator' },
+                  { id: 'json-formatter', name: 'JSON Formatter' },
+                  { id: 'color-palette-generator', name: 'Color Palette' },
+                  { id: 'api-key-generator', name: 'API Key Generator' }
+                ].map((tool) => (
+                  <li key={tool.id}>
+                    <Link to={`/tool/${tool.id}`} className="hover:text-violet-500 dark:hover:text-violet-400 transition-colors block py-0.5">
+                      {tool.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 4: Get In Touch */}
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider">
+                Get In Touch
+              </h4>
+              <div className="space-y-3 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                <p className="leading-relaxed">
+                  Have questions or suggestions? Reach out directly to our team.
+                </p>
+                <div className="space-y-1">
+                  <Link to="/contact" className="text-violet-600 dark:text-violet-400 hover:underline block font-bold">
+                    Contact Support Team
+                  </Link>
+                  <span className="text-[10px] text-slate-450 dark:text-slate-500 block font-normal">
+                    Response average: &lt; 24 hours
+                  </span>
+                </div>
+                {/* Social icons */}
+                <div className="flex gap-2.5 pt-1">
+                  <a href="#" className="p-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200/40 dark:border-slate-800/40 text-slate-500 dark:text-slate-400 hover:bg-violet-500 hover:text-white transition-all">
+                    <FaTwitter className="text-xs" />
+                  </a>
+                  <a href="#" className="p-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200/40 dark:border-slate-800/40 text-slate-500 dark:text-slate-400 hover:bg-violet-500 hover:text-white transition-all">
+                    <FaGithub className="text-xs" />
+                  </a>
+                  <a href="#" className="p-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200/40 dark:border-slate-800/40 text-slate-500 dark:text-slate-400 hover:bg-violet-500 hover:text-white transition-all">
+                    <FaLinkedin className="text-xs" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="text-center mt-6 text-[10px] text-slate-400 dark:text-slate-500 border-t border-slate-200/20 dark:border-slate-800/20 pt-4 font-semibold">
-            &copy; {new Date().getFullYear()} Generator Hub. Designed for local, high-security client-side generation.
+          <div className="mt-10 border-t border-slate-200/20 dark:border-slate-850 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-slate-400 dark:text-slate-500 font-semibold font-display">
+            <div>
+              &copy; {new Date().getFullYear()} Generator Hub. All rights reserved. Designed for local sandbox generation.
+            </div>
+            <div className="flex gap-4">
+              <Link to="/about" className="hover:text-violet-500 dark:hover:text-violet-400 transition-colors">About Us</Link>
+              <span className="text-slate-350 dark:text-slate-800">|</span>
+              <Link to="/privacy" className="hover:text-violet-500 dark:hover:text-violet-400 transition-colors">Privacy Policy</Link>
+            </div>
           </div>
         </footer>
       </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { 
   FaShieldAlt, FaBolt, FaCompass, FaHeart, FaGithub, 
   FaFlag, FaCheckCircle, FaLaptopCode, FaGlobe, FaRegLightbulb,
-  FaKey, FaHistory, FaNetworkWired 
+  FaKey, FaHistory, FaNetworkWired, FaChevronRight
 } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
@@ -279,6 +279,40 @@ const AboutPage = () => {
               </p>
             </motion.div>
           ))}
+        </div>
+      </motion.section>
+
+      {/* Privacy Policy Statement Callout Section */}
+      <motion.section 
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="glass-effect p-6 md:p-8 rounded-3xl border border-emerald-500/20 dark:border-emerald-500/10 bg-emerald-500/5 dark:bg-emerald-500/5 text-left space-y-4 relative overflow-hidden"
+      >
+        <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg shadow-sm">
+            <FaShieldAlt />
+          </div>
+          <div>
+            <h2 className="text-lg md:text-xl font-extrabold text-slate-800 dark:text-white font-display">
+              Stating Our Privacy Guarantee
+            </h2>
+            <p className="text-xs text-slate-400 font-semibold leading-relaxed">
+              We build client-only workflows. No remote servers ever see your credentials or files.
+            </p>
+          </div>
+        </div>
+        <p className="text-xs md:text-sm text-slate-400 dark:text-slate-450 leading-relaxed font-semibold">
+          Your security forms the core design constraint of all generator processes. For full details on Web Cryptography APIs, cookie-free storage policies, and data handling regulations, you can review our full policy document.
+        </p>
+        <div className="pt-1">
+          <Link
+            to="/privacy"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer"
+          >
+            Read Our Full Privacy Policy <FaChevronRight className="text-[9px]" />
+          </Link>
         </div>
       </motion.section>
 
